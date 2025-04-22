@@ -1,0 +1,41 @@
+Debouncing and throttling are both techniques used to control how often a function is executed, especially for events that fire rapidly (like scrolling, resizing, typing, etc.). Here's a breakdown of the difference between the two:
+
+🔁 Debouncing
+Definition:
+Debouncing ensures that a function is only called after a certain delay has passed since the last time it was invoked.
+
+Use Case Example:
+Typing in a search box and triggering an API call. You want the API to fire only after the user has stopped typing for, say, 500ms.
+
+How it works:
+If the event keeps firing, the timer resets every time. The function only executes if the event hasn't happened again in the delay window.
+
+Visual:
+
+keypress ---- ---- ---- (pause) ---> function fires
+
+
+
+
+🚦 Throttling
+
+Definition:
+Throttling ensures that a function is called at most once every X milliseconds, no matter how many times the event is triggered.
+
+Use Case Example:
+Window scroll or resize event. You want to run a function every 500ms at most, even if the event fires 100 times per second.
+
+How it works:
+The function is executed, and then it won’t execute again until the delay has passed.
+
+Visual:
+
+scroll -- function fires -- wait 500ms -- function fires -- wait 500ms ...
+
+Summary Table:
+
+Feature	Debounce	Throttle
+Timing	After a delay since last call	At regular intervals
+Use Case	Search input, auto-save	Scroll handling, resizing
+Behavior	Fires once after inactivity	Fires continuously but limited
+Frequency	One call after events stop	Max one call per time period

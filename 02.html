@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // Remove null and undefined properties from object.
+
+        const obj = {
+            a: 1,
+            b: null,
+            c: undefined,
+            d: 'hello'
+        }
+
+        // Convert Object into Array
+        const newObj = Object.entries(obj);
+
+        // Remove null values from Array
+        const filterArray = newObj.filter(([key, val]) => val != null);
+
+        // Convert Array into Object
+        const arrayToObj = Object.fromEntries(filterArray);
+
+        console.log(arrayToObj);
+
+    </script>
+</body>
+
+</html>

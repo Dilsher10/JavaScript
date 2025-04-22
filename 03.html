@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // Create an object from from the pairs of key and value of the array.
+        
+        // When you have fetched data like that.
+
+        // arrData([
+        //     ['a', 1],
+        //     ['b', 2],
+        //     ['c', 3],
+        //     ['d', 4],
+        // ])
+
+
+        // Solution
+
+        const arrData = (data) => {
+            return Object.fromEntries(data);
+        }
+
+        console.log(arrData([
+            ['a', 1],
+            ['b', 2],
+            ['c', 3],
+            ['d', 4],
+        ]));
+        
+
+        // Note: fromEntries is a method that converts Array into Object.
+
+    </script>
+</body>
+
+</html>

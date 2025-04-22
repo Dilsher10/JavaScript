@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 2rem 10rem;
+            background-color: #333;
+            color: #fff;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Throttling vs Debouncing in JavaScript: What's the Difference and When to Use Each?</h1>
+
+
+    <p>Debouncing and throttling are two commonly used techniques in software development to control the rate at which a
+        function is executed in response to some input. The main difference between these two techniques is that
+        debouncing delays the execution of a function until after a certain amount of time has passed without the input
+        being triggered again, while throttling limits the frequency at which a function can be executed.</p>
+
+
+
+    <p>Here's an example to illustrate the difference between the two techniques:</p>
+
+
+
+    <p>Imagine you have a search bar on a website that sends a request to the server every time a user types a letter.
+        If the user types quickly, this could result in multiple requests being sent to the server in a short period of
+        time, which can cause unnecessary load and slow down the website.</p>
+
+
+
+    <p>To prevent this, you could use a debounce function to delay the search request until the user has finished
+        typing. For example, if you set a debounce time of 500 milliseconds, the search request will only be sent after
+        the user has stopped typing for half a second. This ensures that only one request is sent to the server even if
+        the user types quickly.</p>
+
+
+
+    <p>On the other hand, if you want to limit the frequency of the search requests, you could use a throttle function.
+        For example, if you set a throttle time of 500 milliseconds, the search request will only be sent once every
+        half a second, even if the user types quickly. This ensures that the server is not overloaded with requests and
+        that the website remains responsive.</p>
+
+
+
+    <p>In summary, debounce delays the execution of a function until after a certain amount of time has passed without
+        the input being triggered again, while throttle limits the frequency at which a function can be executed.</p>
+
+
+
+    <h1>Chat GPT Response</h1>
+
+
+    <p>Debouncing and throttling are both techniques used to control how often a function is executed, especially for
+        events that fire rapidly (like scrolling, resizing, typing, etc.). Here's a breakdown of the difference between
+        the two:</p>
+
+    <h2>Debouncing</h2>
+
+    <p>Definition:</p>
+
+    <p>Debouncing ensures that a function is only called after a certain delay has passed since the last time it was
+        invoked.</p>
+
+    <p>Use Case Example:</p>
+
+    <p>Typing in a search box and triggering an API call. You want the API to fire only after the user has stopped
+        typing for, say, 500ms.</p>
+
+    <p>How it works:</p>
+
+    <p>If the event keeps firing, the timer resets every time. The function only executes if the event hasn't happened
+        again in the delay window.</p>
+
+    <p>Visual:</p>
+
+    <p>keypress ---- ---- ---- (pause) ---> function fires</p>
+
+
+
+
+    <h2>Throttling</h2>
+
+    <p>Definition:</p>
+    
+    <p>Throttling ensures that a function is called at most once every X milliseconds, no matter how many times the event
+        is triggered.</p>
+
+    <p>Use Case Example:</p>
+    
+    <p>Window scroll or resize event. You want to run a function every 500ms at most, even if the event fires 100 times per
+        second.</p>
+
+    <p>How it works:</p>
+    
+    <p>The function is executed, and then it won’t execute again until the delay has passed.</p>
+
+    <p>Visual:</p>
+
+    <p>scroll -- function fires -- wait 500ms -- function fires -- wait 500ms ...</p>
+
+    <img src="images/Throttle-vs-Debounce.PNG" alt="">
+</body>
+
+</html>

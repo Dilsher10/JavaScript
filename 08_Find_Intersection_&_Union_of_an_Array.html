@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Intersection & Union of an Array</title>
+</head>
+
+<body>
+    <script>
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = [3, 4, 5, 6, 7];
+
+
+
+        // METHOD #1
+
+        const findIntersection = () => {
+            let newArr = [];
+            for (let i = 0; i < arr1.length; i++) {
+                for (let j = 0; j < arr2.length; j++) {
+                    if (arr1[i] === arr2[j]) {
+                        newArr.push(arr2[j])
+                    }
+                }
+            }
+            return newArr;
+        }
+        console.log(findIntersection());
+
+
+
+
+        const findUnion = (arr1, arr2) => {
+            let newArray = [...arr1, ...arr2];
+            let uniqueArr = [...new Set(newArray)];
+            return uniqueArr;
+        }
+        console.log(findUnion(arr1,arr2));
+
+
+
+
+
+        // METHOD #2
+
+        const intersectionArr =  arr1.filter((curEle) => {
+            return arr2.includes(curEle);
+        })
+        console.log(intersectionArr);
+
+
+
+        const unionArr = [...new Set([...arr1, ...arr2])];
+        console.log(unionArr);
+        
+    </script>
+</body>
+
+</html>

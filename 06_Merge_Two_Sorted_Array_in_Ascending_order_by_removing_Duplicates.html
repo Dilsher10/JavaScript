@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Two Sorted Array in Ascending order by removing Duplicates</title>
+</head>
+
+<body>
+
+    <script>
+        let arr1 = [1, 3, 4, 5, 5];
+        let arr2 = [2, 4, 4, 6, 8];
+
+
+        // METHOD #1
+
+        const result = [...arr1, ...arr2];
+        let newArr = [];
+        for (i = 0; i < result.length; i++) {
+            if (!newArr.includes(result[i])) {
+                newArr.push(result[i])
+            }
+        }
+        newArr.sort((a, b) => a - b);
+        console.log(newArr);
+
+
+
+        // METHOD #2
+
+        const mergeArray = (arr1, arr2) => {
+            const merge = [...arr1, ...arr2];
+            let newArray = [];
+            for (let i = 0; i < merge.length; i++) {
+                if (!newArray.includes(merge[i])) {
+                    newArray.push(merge[i]);
+                }
+            }
+            newArray.sort((a, b) => a - b);
+            return newArray;
+        }
+        console.log(mergeArray(arr1, arr2))
+
+
+
+        // METHOD #3
+
+        let arr3 = [...arr1, ...arr2];
+
+        arr3.sort((a, b) => a - b);
+
+        arr3 = [...new Set(arr3)];
+
+        console.log(arr3);
+    </script>
+</body>
+
+</html>

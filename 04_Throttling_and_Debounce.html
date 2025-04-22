@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: "Lexend Deca Medium";
+        }
+
+        body {
+            height: 200vh;
+        }
+
+        section {
+            position: fixed;
+        }
+
+        p {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body onscroll="showCount()">
+
+
+    <!-- Throttling is a technique used to limit the number of times a function can be executed in a given time frame. It’s
+    extremely useful when dealing with performance-heavy operations, such as resizing the window or scrolling events,
+    where repeated triggers can lead to performance issues. -->
+
+
+    <section>
+        <p class="n_count">Normal Count: 0</p>
+        <p class="t_count">Throttle Count: 0</p>
+        <p class="d_count">Debounce Count: 0</p>
+    </section>
+
+
+    <script>
+
+        const normalDiv = document.querySelector('.n_count');
+        const throllteDiv = document.querySelector('.t_count');
+        const debounceDiv = document.querySelector('.d_count');
+        let n_count = 0;
+        let t_count = 0;
+        let d_count = 0;
+        let isScrolling = true;
+
+
+
+        const normalCount = () => {
+            n_count++;
+            normalDiv.innerHTML = `Normal Count: ${n_count}`;
+        }
+
+
+
+        const throttleCount = () => {
+            if (isScrolling === true) {
+                t_count++;
+                throllteDiv.innerHTML = `Throttle Count: ${t_count}`;
+                isScrolling = false;
+                setTimeout(() => {
+                    isScrolling = true;
+                }, 1000)
+            }
+        }
+
+
+
+        let interval;
+
+        const debounceCount = () => {
+            clearTimeout(interval);
+
+            interval = setTimeout(() => {
+                d_count++;
+                debounceDiv.innerHTML = `Debounce Count: ${d_count}`
+            }, 1000)
+        }
+
+
+
+
+        const showCount = () => {
+            normalCount();
+            throttleCount();
+            debounceCount();
+        }
+    </script>
+</body>
+
+</html>
