@@ -54,6 +54,20 @@
 
         const unionArr = [...new Set([...arr1, ...arr2])];
         console.log(unionArr);
+
+
+
+
+        // METHOD #3
+
+        let array1 = [1, 2, 3, 2, 2, 3];
+        let array2 = [3, 4, 2, 5, 2, 2, 2];
+
+        let intersection = [... new Set(array1)].filter((curEle) => {
+            return array2.includes(curEle);
+        })
+
+        console.log(intersection);
         
     </script>
 </body>
