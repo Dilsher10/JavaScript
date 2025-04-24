@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // METHOD #1
+
+        const num = 10;
+        let x = 0;
+        let y = 1;
+        let fn = x + y;
+
+        console.log(x);
+        console.log(y);
+
+        while (fn < num) {
+            console.log(fn);
+            x = y;
+            y = fn;
+            fn = x + y;
+        }
+
+
+
+
+
+        // METHOD #2
+
+        function generateFibonacci(n) {
+            const fibonacci = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+            }
+            return fibonacci.slice(0, n);
+        }
+        const number = 10;
+        const sequence = generateFibonacci(number);
+        console.log(`Fibonacci sequence of ${number} terms:`, sequence);
+    </script>
+</body>
+
+</html>
