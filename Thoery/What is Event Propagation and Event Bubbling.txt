@@ -1,0 +1,1 @@
+What is Event Propagation? Event Bubbling in JavaScript
