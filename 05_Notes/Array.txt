@@ -1,0 +1,61 @@
+**************************** ARRAY LEETCODE QUESTIONS ***********************************
+
+
+Easy Level:
+
+Focus: Basics, Two Pointers, Prefix Sum
+These questions build foundational skills and are often part of phone screens.
+
+| Problem Name  # 14                      | LeetCode # | Topics                          |
+|-----------------------------------------|------------|---------------------------------|
+| Two Sum                                 | 1          | Hash Map, Brute Force           |
+| Best Time to Buy and Sell Stock         | 121        | Greedy, One Pass                |
+| Maximum Subarray                        | 53         | Kadane's Algorithm              |
+| Merge Sorted Array                      | 88         | Two Pointers, Sorting           |
+| Remove Duplicates from Sorted Array     | 26         | Two Pointers                    |
+| Move Zeroes                             | 283        | Two Pointers, In-Place          |
+| Valid Mountain Array                    | 941        | Two Pointers                    |
+| Intersection of Two Arrays II           | 350        | Hash Map, Sorting               |
+| Rotate Array                            | 189        |                                 |
+| Maximum and Minimum Element in an Array |            | https://www.geeksforgeeks.org/  |
+| Reverse the Array                       |            | https://www.geeksforgeeks.org/  |
+| Contains Duplicate                      | 217        |                                 |
+| Chocolate Distribution Problem          |            | https://www.geeksforgeeks.org/  |
+| Search in Rotated Sorted Array          | 33         |                                 |
+
+
+
+
+
+Medium Level:
+
+Focus: Sliding Window, Binary Search, Greedy, Sorting, Prefix/Suffix Arrays
+Most technical interviews focus heavily on these.
+
+| Problem Name  # 25                                                        | LeetCode # | Topics                              |
+|---------------------------------------------------------------------------|------------|-------------------------------------|
+| 3Sum                                                                      | 15         | Sorting, Two Pointers               |
+| Container With Most Water                                                 | 11         | Two Pointers                        |
+| Subarray Sum Equals K                                                     | 560        | Prefix Sum, Hash Map                |
+| Product of Array Except Self                                              | 238        | Prefix/Suffix Product               |
+| Maximum Product Subarray                                                  | 152        | DP, Greedy                          |
+| Longest Substring Without Repeating Chars                                 | 3          | Sliding Window, Hash Map            |
+| Set Matrix Zeroes                                                         | 73         | Matrix, In-Place Modification       |
+| Sort Colors                                                               | 75         | Dutch National Flag Algorithm       |
+| Rotate Array                                                              | 189        | Array Manipulation                  |
+| Find Minimum in Rotated Sorted Array                                      | 153        | Binary Search                       |
+| Search in Rotated Sorted Array                                            | 33         | Binary Search                       |
+| Spiral Matrix                                                             | 54         |                                     |
+| Kth Largest Element in an Array                                           | 215        |                                     |
+| Minimum Size Subarray Sum                                                 | 209        |                                     |
+| Next Permutation                                                          | 31         |                                     |
+| Best time to Buy and Sell Stock                                           | 121        |                                     |
+| Repeat and Missing Number Array                                           |            | https://www.interviewbit.com/       |
+| Trapping Rain Water                                                       | 42         |                                     |
+| Find Pair with Sum in Sorted & Rotated Array                              |            | https://www.geeksforgeeks.org/      |
+| Given Sum Pair                                                            |            | https://www.geeksforgeeks.org/      |
+| Kth - Smallest Element                                                    |            | https://www.geeksforgeeks.org/      |
+| Merge Overlapping Intervals                                               |            | https://www.geeksforgeeks.org/      |
+| Find minimum number of merge operations to make an array palindrome       |            | https://www.geeksforgeeks.org/      |
+| Given an Array of Numbers Arrange the Numbers to Form the Biggest Number  |            | https://www.geeksforgeeks.org/      |
+| Space Optimization Using Bit Manipulations                                |            | https://www.geeksforgeeks.org/      |

@@ -1,0 +1,61 @@
+Mock Frontend Interview
+
+🧠 Section 1: JavaScript & Browser Concepts
+
+Explain the difference between null, undefined, and NaN in JavaScript. Give examples of how each occurs.
+
+What will the following code output and why?
+
+const person = { name: 'Alice' };
+const clone = person;
+clone.name = 'Bob';
+console.log(person.name);
+Implement a debounce function.
+
+
+function debounce(fn, delay) {
+  // Your code here
+}
+
+
+
+
+
+🎨 Section 2: CSS and Layout
+
+How would you center a div vertically and horizontally using Flexbox?
+
+Explain the difference between em, rem, px, and % units in CSS. When would you use each?
+
+
+
+
+⚙️ Section 3: React/Component Thinking
+
+What are the differences between controlled and uncontrolled components in React?
+
+You are given a list of 10,000 items to display in a table. How would you implement this efficiently in React?
+
+Write a basic custom hook that listens for window resize events and returns the current window width.
+
+
+
+
+🏗️ Section 4: System Design (Frontend Focus)
+
+Design a simplified version of a Kanban board (like Trello).
+
+How would you manage the drag-and-drop feature?
+
+How would you structure your components?
+
+Imagine you're building a notification system that shows real-time alerts in a top-right corner. How would you handle rendering and removing those notifications?
+
+
+
+
+🧍 Section 5: Behavioral
+
+Tell me about a time you received negative feedback on your code. How did you respond?
+
+How do you approach testing your frontend code (unit, integration, E2E)?

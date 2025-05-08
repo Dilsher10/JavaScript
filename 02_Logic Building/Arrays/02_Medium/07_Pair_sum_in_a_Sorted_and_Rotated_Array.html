@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pair Sum in a Sorted and Rotated Array</title>
+</head>
+
+<body>
+    <script>
+        function findPairSum(nums, target) {
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = i + 1; j < nums.length; j++) {
+                    if (nums[i] + nums[j] === target) {
+                        console.log("Output: true");
+                        console.log(`Explanation: There is a pair (${nums[i]}, ${nums[j]}) with sum ${target}.`);
+                        return true;
+                    }
+                }
+            }
+            console.log("Output: false");
+            console.log(`Explanation: No pair found with sum ${target}.`);
+            return false;
+        }
+
+        let nums = [11, 15, 6, 8, 9, 10], target = 16;
+        findPairSum(nums, target);
+
+    </script>
+</body>
+
+</html>
