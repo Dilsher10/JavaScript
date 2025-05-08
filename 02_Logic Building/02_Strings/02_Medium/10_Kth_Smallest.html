@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function kthSmallest(nums){
+            let temp;
+            for(let i=0; i<nums.length; i++){
+                for(let j=i+1; j<nums.length; j++){
+                    if(nums[i] > nums[j]){
+                        temp = nums[i];
+                        nums[i] = nums[j];
+                        nums[j] = temp;
+                    }
+                }
+            }
+            return nums[k-1];
+        }
+        nums = [7, 10, 4, 3, 20, 15], k = 3
+        console.log(kthSmallest(nums,k));
+    </script>
+</body>
+</html>

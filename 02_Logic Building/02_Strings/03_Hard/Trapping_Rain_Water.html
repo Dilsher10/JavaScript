@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function trap(height) {
+
+            let n = height.length;
+            let water = 0;
+
+            for (let i = 0; i < n; i++) {
+                let maxLeft = 0, maxRight = 0;
+
+                // Find max on the left
+                for (let j = 0; j <= i; j++) {
+                    maxLeft = Math.max(maxLeft, height[j]);
+                }
+
+                // Find max on the right
+                for (let j = i; j < n; j++) {
+                    maxRight = Math.max(maxRight, height[j]);
+                }
+
+                // Add water trapped at current index
+                water += Math.min(maxLeft, maxRight) - height[i];
+            }
+
+            return water;
+        }
+        let height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+        console.log(trap(height));
+    </script>
+</body>
+
+</html>

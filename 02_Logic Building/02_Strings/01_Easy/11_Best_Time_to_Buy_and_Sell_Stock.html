@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Time to Buy and Sell Stock</title>
+</head>
+
+<body>
+    <script>
+        const buyAndSell = (prices) => {
+
+            let buy = Infinity;
+            let buyIndex = 0;
+            let sell = 0;
+            let profit = 0;
+
+            for (let i = 0; i < prices.length; i++) {
+                if (prices[i] < buy) {
+                    buy = prices[i];
+                    buyIndex = i;
+                }
+            }
+
+            for (let i = buyIndex; i < prices.length; i++) {
+                if (prices[i] > sell) {
+                    sell = prices[i];
+                }
+            }
+
+            profit = sell - buy;
+            return profit;
+        }
+        const prices = [7, 1, 5, 3, 6, 4];
+        console.log(buyAndSell(prices));
+
+    </script>
+</body>
+
+</html>
