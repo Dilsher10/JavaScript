@@ -9,8 +9,11 @@
 
 <body>
     <script>
+
+        // METHOD #1
+
         const minChocolateDifference = (arr, m) => {
-            
+
             if (arr.length === 0 || m === 0) return 0;
 
             arr.sort((a, b) => a - b);
@@ -19,9 +22,7 @@
 
             for (let i = 0; i + m - 1 < arr.length; i++) {
                 let diff = arr[i + m - 1] - arr[i];
-                if (diff < minDiff) {
-                    minDiff = diff;
-                }
+                minDiff = Math.min(minDiff, diff);
             }
 
             return minDiff;
@@ -30,6 +31,39 @@
         let arr = [7, 3, 2, 4, 9, 12, 56];
         let m = 3;
         console.log(minChocolateDifference(arr, m));
+
+
+
+
+
+        // METHOD #2
+
+        function demo(nums, m) {
+            let smallest = [];
+
+            for (let i = 0; i < nums.length; i++) {
+                if (smallest.length < m) {
+                    smallest.push(nums[i]);
+                } else {
+                    let maxInSmallest = Math.max(...smallest);
+
+                    if (nums[i] < maxInSmallest) {
+                        let index = smallest.indexOf(maxInSmallest);
+                        smallest[index] = nums[i];
+                    }
+                }
+            }
+
+            let min = Math.min(...smallest);
+            let max = Math.max(...smallest);
+            let diff = max - min;
+
+            return diff;
+        }
+
+        nums = [7, 3, 2, 4, 9, 12, 56];
+        m = 5;
+        console.log(demo(nums, m));
     </script>
 </body>
 
