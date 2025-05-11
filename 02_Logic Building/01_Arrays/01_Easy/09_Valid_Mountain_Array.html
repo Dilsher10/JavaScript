@@ -4,37 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valid Mountain Array</title>
+    <title>Document</title>
 </head>
 
 <body>
     <script>
-        function ValidMountainArray(nums) {
-            if(nums.length<3) return false;
-            let peak = 0;
-            for (let i = 1; i < nums.length; i++) {
-                let prev = nums[i - 1];
-                let curr = nums[i];
-                let next = nums[i + 1];
+        function isMountainArray(arr) {
+            
+            const n = arr.length;
+            if (n < 3) return false;
 
-                if (prev === curr || curr === next) {
-                    return false;
-                }
-                else if (prev > curr && curr < next) {
-                    return false;
-                }
-                else if (prev < curr && curr > next) {
-                    peak++;
-                    if (peak > 1) {
-                        return false;
-                    }
+            let peak = -1;
+
+            // Find the peak index
+            for (let i = 1; i < n - 1; i++) {
+                if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+                    peak = i;
+                    break;
                 }
             }
-            return peak === 1;
-        }
-        let nums = [0,3,2,1]
-        console.log(ValidMountainArray(nums));
 
+            if (peak === -1) return false;
+
+            // Check strictly increasing before peak
+            for (let i = 0; i < peak; i++) {
+                if (arr[i] >= arr[i + 1]) return false;
+            }
+
+            // Check strictly decreasing after peak
+            for (let i = peak; i < n - 1; i++) {
+                if (arr[i] <= arr[i + 1]) return false;
+            }
+
+            return true;
+        }
+
+        console.log(isMountainArray([0, 4, 6, 8, 3, 2, 1]));
     </script>
 </body>
 
