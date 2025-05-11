@@ -4,37 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Time to Buy and Sell Stock</title>
+    <title>Document</title>
 </head>
 
 <body>
     <script>
-        const buyAndSell = (prices) => {
+        function maxProfit(prices) {
 
-            let buy = Infinity;
-            let buyIndex = 0;
-            let sell = 0;
-            let profit = 0;
+            let maxProfit = 0;
 
             for (let i = 0; i < prices.length; i++) {
-                if (prices[i] < buy) {
-                    buy = prices[i];
-                    buyIndex = i;
+                for (let j = i + 1; j < prices.length; j++) {
+                    if (prices[j] > prices[i]) {
+                        let profit = prices[j] - prices[i];
+                        maxProfit = Math.max(maxProfit, profit);
+                    }
                 }
             }
 
-            for (let i = buyIndex; i < prices.length; i++) {
-                if (prices[i] > sell) {
-                    sell = prices[i];
-                }
-            }
-
-            profit = sell - buy;
-            return profit;
+            return maxProfit;
         }
-        const prices = [7, 1, 5, 3, 6, 4];
-        console.log(buyAndSell(prices));
 
+        prices = [7, 1, 5, 3, 6, 4]
+        console.log(maxProfit(prices));
     </script>
 </body>
 
