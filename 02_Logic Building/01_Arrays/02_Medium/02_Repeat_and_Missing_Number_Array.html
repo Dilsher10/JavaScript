@@ -9,6 +9,38 @@
 
 <body>
     <script>
+
+        // METHOD #1
+
+        function findRepeatingAndMissing(arr) {
+            const n = arr.length;
+            const freq = new Array(n+1).fill(0);
+
+            for (let i = 0; i < n; i++) {
+                freq[arr[i]]++;
+            }
+
+            let repeating = -1;
+            let missing = -1;
+
+            for (let i = 1; i <= n; i++) {
+                if (freq[i] === 0) {
+                    missing = i;
+                } else if (freq[i] === 2) {
+                    repeating = i;
+                }
+            }
+
+            return [repeating, missing];
+        }
+
+        const arr = [4, 3, 6, 2, 1, 1];
+        console.log(findRepeatingAndMissing(arr));
+
+        
+
+        // METHOD #2
+        
         function findRepeatAndMissing(arr) {
             const n = arr.length;
             let repeat = -1;
