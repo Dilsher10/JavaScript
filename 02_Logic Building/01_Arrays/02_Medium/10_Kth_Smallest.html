@@ -7,6 +7,9 @@
 </head>
 <body>
     <script>
+        
+        // METHOD #1 - By Sorting
+        
         function kthSmallest(nums){
             let temp;
             for(let i=0; i<nums.length; i++){
@@ -22,6 +25,34 @@
         }
         nums = [7, 10, 4, 3, 20, 15], k = 3
         console.log(kthSmallest(nums,k));
+
+        
+        // METHOD #2 - Without Sorting
+
+        function findKthLargest(nums, k) {
+            let usedIndices = new Set();
+
+            for (let i = 0; i < k; i++) {
+                let min = Infinity;
+                minIndex = Infinity;
+
+                for (let j = 0; j < nums.length; j++) {
+                    if (!usedIndices.has(j) && nums[j] < min) {
+                        min = nums[j];
+                        minIndex = j;
+                    }
+                }
+
+                usedIndices.add(minIndex);
+
+                if(i === k-1){
+                    return min;
+                }
+            }
+        }
+
+        nums = [7, 10, 4, 3, 20, 15], k = 3
+        console.log(findKthLargest(nums, k));
     </script>
 </body>
 </html>
