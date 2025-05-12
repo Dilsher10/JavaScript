@@ -29,7 +29,7 @@
         
         // METHOD #2 - Without Sorting
 
-        function findKthLargest(nums, k) {
+        function findKthSmallest(nums, k) {
             let usedIndices = new Set();
 
             for (let i = 0; i < k; i++) {
@@ -52,7 +52,7 @@
         }
 
         nums = [7, 10, 4, 3, 20, 15], k = 3
-        console.log(findKthLargest(nums, k));
+        console.log(findKthSmallest(nums, k));
     </script>
 </body>
 </html>
