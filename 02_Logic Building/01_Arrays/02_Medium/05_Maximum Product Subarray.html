@@ -52,17 +52,14 @@
                 }
             }
 
-            return {
-                maxProduct,
-                subarray: resultSubarray
-            };
+            return { maxProduct, resultSubarray };
         }
 
         nums = [-2, 0, -1]
         const result = maxProductSubarray(nums);
 
         console.log("Output:", result.maxProduct);
-        console.log("Subarray:", result.subarray);
+        console.log("Subarray:", result.resultSubarray);
 
     </script>
 </body>
