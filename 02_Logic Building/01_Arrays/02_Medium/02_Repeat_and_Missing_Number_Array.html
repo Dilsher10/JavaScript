@@ -9,21 +9,62 @@
 
 <body>
     <script>
-        function repeatedNumber(nums) {
-            let ans = [];
-            for (let i = 0; i < nums.length; i++) {
-                for (let j = i + 1; j < nums.length; j++) {
-                    if (nums[i] === nums[j]) {
-                        ans.push(nums[i]);
-                        ans.push(nums[i] + 1)
-                    }
+
+        // METHOD #1
+
+        function findRepeatingAndMissing(arr) {
+            const n = arr.length;
+            const freq = new Array(n+1).fill(0);
+
+            for (let i = 0; i < n; i++) {
+                freq[arr[i]]++;
+            }
+
+            let repeating = -1;
+            let missing = -1;
+
+            for (let i = 1; i <= n; i++) {
+                if (freq[i] === 0) {
+                    missing = i;
+                } else if (freq[i] === 2) {
+                    repeating = i;
                 }
             }
-            return ans;
+
+            return [repeating, missing];
         }
 
-        console.log(repeatedNumber([3, 1, 2, 5, 3]));
+        const arr = [4, 3, 6, 2, 1, 1];
+        console.log(findRepeatingAndMissing(arr));
 
+        
+
+        // METHOD #2
+        
+        function findRepeatAndMissing(arr) {
+            const n = arr.length;
+            let repeat = -1;
+            let missing = -1;
+            
+            for (let i = 1; i <= n; i++) {
+                let count = 0;
+                for (let j = 0; j < n; j++) {
+                    if (arr[j] === i) {
+                        count++;
+                    }
+                }
+                if (count === 0) {
+                    missing = i;
+                } else if (count === 2) {
+                    repeat = i;
+                }
+            }
+
+            return [repeat, missing];
+        }
+
+        const arr = [1, 2, 4, 5, 5];
+        console.log(findRepeatAndMissing(arr));
     </script>
 </body>
 

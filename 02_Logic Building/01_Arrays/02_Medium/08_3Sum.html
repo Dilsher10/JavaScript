@@ -13,16 +13,17 @@
         function threeSum(nums) {
 
             const results = [];
-            const n = nums.length;
+            let seen = new Set();
 
-            for (let i = 0; i < n - 2; i++) {
-                for (let j = i + 1; j < n - 1; j++) {
-                    for (let k = j + 1; k < n; k++) {
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = i + 1; j < nums.length; j++) {
+                    for (let k = j + 1; k < nums.length; k++) {
                         if (nums[i] + nums[j] + nums[k] === 0) {
                             const triplet = [nums[i], nums[j], nums[k]].sort((a, b) => a - b);
                             const key = triplet.toString();
                             // Avoid adding duplicates
-                            if (!results.some(r => r.toString() === key)) {
+                            if (!seen.has(key)) {
+                                seen.add(key);
                                 results.push(triplet);
                             }
                         }
@@ -34,6 +35,40 @@
         }
 
         console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+
+
+
+
+        function threeSum(nums) {
+    const result = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length; j++) {
+            for (let k = 0; k < nums.length; k++) {
+                // Ensure all indices are distinct
+                if (i !== j && i !== k && j !== k) {
+                    const sum = nums[i] + nums[j] + nums[k];
+
+                    if (sum === 0) {
+                        // Sort the triplet so that duplicates can be detected
+                        const triplet = [nums[i], nums[j], nums[k]].sort((a, b) => a - b);
+                        const tripletStr = triplet.toString();
+
+                        // Check if this triplet is already in the result
+                        if (!result.some(r => r.toString() === tripletStr)) {
+                            result.push(triplet);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return result;
+}
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+// Output: [[-1, -1, 2], [-1, 0, 1]]
+
 
     </script>
 </body>

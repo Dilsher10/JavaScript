@@ -9,9 +9,53 @@
 
 <body>
     <script>
+
+        // METHOD #1 - With Sorting
+
         function findKthLargest(nums, k) {
-            nums.sort((a, b) => b - a)
-            return nums[k - 1];
+
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = 0; j < nums.length; j++) {
+                    if (nums[j] < nums[j + 1]) {
+                        let temp = nums[j];
+                        nums[j] = nums[j + 1];
+                        nums[j + 1] = temp;
+                    }
+                }
+            }
+
+            return nums[k-1];
+        }
+        
+        nums = [3, 2, 3, 1, 2, 4, 5, 5, 6], k = 4
+        console.log(findKthLargest(nums, k));
+
+
+        
+
+        // METHOD #2 - Without Sorting
+
+        function findKthLargest(nums, k) {
+        
+            let usedIndices = new Set();
+
+            for (let i = 0; i < k; i++) {
+                let max = -Infinity;
+                let maxIndex = -1;
+
+                for (let j = 0; j < nums.length; j++) {
+                    if (!usedIndices.has(j) && nums[j] > max) {
+                        max = nums[j];
+                        maxIndex = j;
+                    }
+                }
+
+                usedIndices.add(maxIndex);
+
+                if (i === k - 1) {
+                    return max;
+                }
+            }
         }
 
         nums = [3, 2, 3, 1, 2, 4, 5, 5, 6], k = 4

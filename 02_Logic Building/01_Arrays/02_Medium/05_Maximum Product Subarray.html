@@ -9,9 +9,12 @@
 
 <body>
     <script>
+
+        // METHOD #1 - Without Getting SubArray
+        
         function maxProduct(nums) {
 
-            let maxProduct = Number.NEGATIVE_INFINITY;
+            let maxProduct = -Infinity;
 
             for (let i = 0; i < nums.length; i++) {
                 let currentProduct = 1;
@@ -25,6 +28,38 @@
         }
 
         console.log(maxProduct([2, 3, -2, 4]));
+
+
+
+        // METHOD #2 - With Getting SubArray
+
+        function maxProductSubarray(nums) {
+            let maxProduct = -Infinity;
+            let resultSubarray = [];
+
+            for (let i = 0; i < nums.length; i++) {
+                let product = 1;
+                let currentSubarray = [];
+
+                for (let j = i; j < nums.length; j++) {
+                    product *= nums[j];
+                    currentSubarray.push(nums[j]);
+
+                    if (product > maxProduct) {
+                        maxProduct = product;
+                        resultSubarray = currentSubarray.slice();
+                    }
+                }
+            }
+
+            return { maxProduct, resultSubarray };
+        }
+
+        nums = [-2, 0, -1]
+        const result = maxProductSubarray(nums);
+
+        console.log("Output:", result.maxProduct);
+        console.log("Subarray:", result.resultSubarray);
 
     </script>
 </body>
