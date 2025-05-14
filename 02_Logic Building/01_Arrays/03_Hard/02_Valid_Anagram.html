@@ -20,6 +20,51 @@
 
         s = "anagram", t = "nagaram"
         console.log(isAnagram(s, t));
+
+
+
+        function isAnagram(s, t) {
+    // Step 1: Length check
+    if (s.length !== t.length) return false;
+
+    // Step 2: Convert strings to arrays manually
+    let sArr = [];
+    let tArr = [];
+    
+    for (let i = 0; i < s.length; i++) {
+        sArr[i] = s[i];
+        tArr[i] = t[i];
+    }
+
+    // Step 3: Sort both arrays using selection sort
+    function selectionSort(arr) {
+        for (let i = 0; i < arr.length - 1; i++) {
+            let minIndex = i;
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Swap
+            let temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+
+    selectionSort(sArr);
+    selectionSort(tArr);
+
+    // Step 4: Compare sorted arrays
+    for (let i = 0; i < sArr.length; i++) {
+        if (sArr[i] !== tArr[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
     </script>
 </body>
 
