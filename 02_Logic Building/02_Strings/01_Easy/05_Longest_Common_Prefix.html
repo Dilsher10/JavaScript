@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function longestCommonPrefix(strs) {
+
+            if (!strs.length) return "";
+
+            let prefix = "";
+
+            // Loop through each character of the first string
+            for (let i = 0; i < strs[0].length; i++) {
+                const char = strs[0][i];
+
+                // Check if this character is present at the same position in all strings
+                for (let j = 1; j < strs.length; j++) {
+                    if (strs[j][i] !== char) {
+                        return prefix; // mismatch found
+                    }
+                }
+
+                // If no mismatch, add the character to prefix
+                prefix += char;
+            }
+
+            return prefix;
+        }
+
+        strs = ["flower", "flow", "flight"];
+        console.log(longestCommonPrefix(strs));
+    </script>
+</body>
+
+</html>

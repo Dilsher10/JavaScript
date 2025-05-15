@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        function printSequence(str) {
+
+            let keypadMap = [
+                "2", "22", "222",      // A, B, C
+                "3", "33", "333",      // D, E, F
+                "4", "44", "444",      // G, H, I
+                "5", "55", "555",      // J, K, L
+                "6", "66", "666",      // M, N, O
+                "7", "77", "777", "7777", // P, Q, R, S
+                "8", "88", "888",      // T, U, V
+                "9", "99", "999", "9999"  // W, X, Y, Z
+            ];
+
+            let output = "";
+
+            str = str.toUpperCase();
+
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === ' ') {
+                    output += "0";
+                } else {
+                    let position = str[i].charCodeAt(0) - 'A'.charCodeAt(0);
+                    output += keypadMap[position];
+                }
+            }
+
+            return output;
+        }
+
+        let str = "Hello World";
+        console.log(printSequence(str));
+    </script>
+</body>
+
+</html>

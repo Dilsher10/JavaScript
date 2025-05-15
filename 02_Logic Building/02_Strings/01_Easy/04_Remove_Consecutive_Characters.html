@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // METHOD #1
+
+        function removeDuplicates(s) {
+            let ans = [];
+
+            for (let i = 0; i < s.length; i++) {
+                let last = ans.length >= 1 ? ans[ans.length - 1] : null;
+
+                if (s[i] !== last) {
+                    ans.push(s[i])
+                }
+            }
+
+            return ans.join('');
+        }
+        s = "abcddcba"
+        console.log(removeDuplicates(s));
+
+
+
+
+        // METHOD #2
+
+        function removeDuplicates(s) {
+            let result = s[0];
+
+            for (let i = 1; i < s.length; i++) {
+                if (s[i] !== s[i - 1]) {
+                    result += s[i]
+                }
+            }
+
+            return result;
+        }
+
+        s = "aaabbbccdaa";
+        console.log(removeDuplicates(s));
+
+    </script>
+</body>
+
+</html>

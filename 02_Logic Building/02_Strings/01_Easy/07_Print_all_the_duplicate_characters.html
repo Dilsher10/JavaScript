@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function printDuplicates(str) {
+
+            const freq = {};
+
+            // Count character frequencies
+            for (let i = 0; i < str.length; i++) {
+                const char = str[i];
+                freq[char] = (freq[char] || 0) + 1;
+            }
+
+            // Print only repeating characters
+            for (const char in freq) {
+                if (freq[char] > 1) {
+                    console.log(`${char} = ${freq[char]}`);
+                }
+            }
+        }
+
+        const str = "Hello";
+        printDuplicates(str);
+    </script>
+</body>
+
+</html>
