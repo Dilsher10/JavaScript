@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // METHOD #1
+
+        function isAnagram(s, t) {
+            let sArr = [];
+            let tArr = [];
+
+            for (let i = 0; i < s.length; i++) {
+                sArr[i] = s[i];
+                tArr[i] = t[i];
+            }
+
+            for (let i = 0; i < sArr.length; i++) {
+                for (let j = i + 1; j < sArr.length; j++) {
+                    if (sArr[i] > sArr[j]) {
+                        let temp = sArr[i];
+                        sArr[i] = sArr[j];
+                        sArr[j] = temp;
+                    }
+                }
+            }
+
+
+            for (let i = 0; i < tArr.length; i++) {
+                for (let j = i + 1; j < tArr.length; j++) {
+                    if (tArr[i] > tArr[j]) {
+                        let temp = tArr[i];
+                        tArr[i] = tArr[j];
+                        tArr[j] = temp;
+                    }
+                }
+            }
+
+
+            for (let i = 0; i < sArr.length; i++) {
+                if (sArr[i] !== tArr[i]) return false
+            }
+
+            return true;
+
+        }
+
+        s = "anagram", t = "nagaram";
+        console.log(isAnagram(s, t));
+
+
+        // METHOD #2
+
+        function isAnagram(s, t) {
+            s = s.split('').sort().join('');
+            t = t.split('').sort().join('');
+
+            return s === t;
+
+        }
+        s = "anagram", t = "nagaram";
+        console.log(isAnagram(s, t));
+
+    </script>
+</body>
+
+</html>
