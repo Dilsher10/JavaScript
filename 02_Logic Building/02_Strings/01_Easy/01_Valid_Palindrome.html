@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isPalindrome(s) {
+
+            s = s.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+
+            for (let i = 0; i < s.length; i++) {
+                let start = s[i];
+                let end = s[s.length - 1 - i];
+
+                if (start != end) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        s = "A man, a plan, a canal: Panama"
+        console.log(isPalindrome(s));
+    </script>
+</body>
+
+</html>
