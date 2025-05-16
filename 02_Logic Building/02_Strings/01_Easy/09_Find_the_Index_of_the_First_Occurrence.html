@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function strStr(haystack, needle) {
+
+            if (needle === "") return 0;
+
+            for (let i = 0; i <= haystack.length; i++) {
+                let substring = "";
+                for (let j = 0; j < needle.length; j++) {
+                    substring += haystack[i + j];
+                }
+                if (substring === needle) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        haystack = "sadbutsad", needle = "sad"
+        console.log(strStr(haystack, needle));
+    </script>
+</body>
+
+</html>
