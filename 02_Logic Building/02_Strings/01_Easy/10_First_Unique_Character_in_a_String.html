@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function firstUniqChar(s) {
+
+            for (let i = 0; i < s.length; i++) {
+                let unique = true;
+                for (let j = 0; j < s.length; j++) {
+                    if (i !== j && s[i] === s[j]) {
+                        unique = false;
+                        break;
+                    }
+                }
+                if (unique) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        s = "loveleetcode"
+        console.log(firstUniqChar(s));
+    </script>
+</body>
+
+</html>
