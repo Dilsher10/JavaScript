@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function lengthOfLongestSubstring(s) {
+
+            let maxLength = 0;
+            let longestSubstring = "";
+
+            for (let i = 0; i < s.length; i++) {
+                let seen = "";
+
+                for (let j = i; j < s.length; j++) {
+                    if (seen.includes(s[j])) {
+                        break;
+                    } else {
+                        seen += s[j];
+                        if (seen.length > maxLength) {
+                            maxLength = seen.length;
+                            longestSubstring = seen;
+                        }
+                    }
+                }
+            }
+
+            console.log(`Output: ${maxLength}`);
+            console.log(`Explanation: The answer is "${longestSubstring}", with the length of ${maxLength}.`);
+        }
+
+        const s = "pwwkew";
+        lengthOfLongestSubstring(s);
+    </script>
+</body>
+
+</html>
