@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function characterReplacement(s, k) {
+            let longestSubString = "";
+
+            for (let i = 0; i < s.length; i++) {
+                for (let j = i; j < s.length; j++) {
+                    const substring = s.slice(i, j + 1);
+                    const freq = new Array(26).fill(0);
+
+                    for (let char of substring) {
+                        freq[char.charCodeAt(0) - 65]++;
+                    }
+
+                    const maxFreq = Math.max(...freq);
+                    const replacementsNeeded = substring.length - maxFreq;
+
+                    if (replacementsNeeded <= k) {
+                        if (substring.length > longestSubString.length) {
+                            const mostFrequentChar = String.fromCharCode(freq.indexOf(maxFreq) + 65);
+                            longestSubString = mostFrequentChar.repeat(substring.length);
+                        }
+                    }
+                }
+            }
+
+            return `Longest Substring: ${longestSubString}, Length: ${longestSubString.length}`;
+        }
+
+        console.log(characterReplacement("AABABBA", 1)); // Output: "AAAA"
+        console.log(characterReplacement("ABAB", 2));    // Output: "AAAA"
+        console.log(characterReplacement("ABCDE", 1));   // Output: "AA"
+
+    </script>
+</body>
+
+</html>
