@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function groupAnagrams(strs) {
+            debugger
+            const result = [];
+
+            const visited = new Array(strs.length).fill(false);
+
+            for (let i = 0; i < strs.length; i++) {
+                if (visited[i]) continue; // Skip if already grouped
+
+                const group = [strs[i]];
+                visited[i] = true;
+                const sortedI = strs[i].split('').sort().join('');
+
+                for (let j = i + 1; j < strs.length; j++) {
+                    if (visited[j]) continue;
+
+                    const sortedJ = strs[j].split('').sort().join('');
+                    if (sortedI === sortedJ) {
+                        group.push(strs[j]);
+                        visited[j] = true;
+                    }
+                }
+
+                result.push(group);
+            }
+
+            return result;
+        }
+
+        const strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
+        console.log(groupAnagrams(strs));
+
+    </script>
+</body>
+
+</html>
