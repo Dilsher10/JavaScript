@@ -10,12 +10,12 @@
 <body>
     <script>
         function groupAnagrams(strs) {
-            debugger
+       
             const result = [];
-
             const visited = new Array(strs.length).fill(false);
 
             for (let i = 0; i < strs.length; i++) {
+
                 if (visited[i]) continue; // Skip if already grouped
 
                 const group = [strs[i]];
@@ -31,16 +31,12 @@
                         visited[j] = true;
                     }
                 }
-
                 result.push(group);
             }
-
             return result;
         }
-
         const strs = ["eat", "tea", "tan", "ate", "nat", "bat"];
         console.log(groupAnagrams(strs));
-
     </script>
 </body>
 
