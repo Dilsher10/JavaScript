@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function minWindow(s, t) {
+
+            let minLen = Infinity;
+            let answer = "";
+
+            for (let i = 0; i < s.length; i++) {
+                for (let j = i + 1; j <= s.length; j++) {
+                    let sub = s.slice(i, j);
+                    let temp = sub;
+
+                    let isValid = true;
+                    for (let k = 0; k < t.length; k++) {
+                        let ch = t[k];
+                        let index = temp.indexOf(ch);
+                        if (index === -1) {
+                            isValid = false;
+                            break;
+                        } else {
+                            // remove character so duplicates are checked correctly
+                            temp = temp.slice(0, index) + temp.slice(index + 1);
+                        }
+                    }
+
+                    if (isValid && sub.length < minLen) {
+                        minLen = sub.length;
+                        answer = sub;
+                    }
+                }
+            }
+
+            return answer;
+        }
+        console.log(minWindow("ADOBECODEBANC", "ABC"));
+    </script>
+</body>
+</html>
