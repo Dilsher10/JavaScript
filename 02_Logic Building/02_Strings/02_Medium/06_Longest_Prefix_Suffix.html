@@ -10,27 +10,31 @@
 <body>
     <script>
         function longestPrefixSuffix(s) {
-            const n = s.length;
+            
+            let longestPrefixSuffix = "";
 
-            for (let len = n - 1; len > 0; len--) {
+            for (let i = 0; i < s.length; i++) {
                 let isMatch = true;
 
-                for (let i = 0; i < len; i++) {
-                    if (s[i] !== s[n - len + i]) {
+                for (let j = 0; j < i; j++) {
+                    if (s[j] !== s[s.length - i + j]) {
                         isMatch = false;
                         break;
                     }
                 }
 
-                if (isMatch) return len;
+                if (isMatch) {
+                    let temp = "";
+                    for (let k = 0; k < i; k++) {
+                        temp += s[k];
+                    }
+                    longestPrefixSuffix = temp;
+                }
             }
-
-            return 0;
+            return longestPrefixSuffix;
         }
 
-        s = "aaaa"
-        console.log(longestPrefixSuffix(s));
-
+        console.log(longestPrefixSuffix("abab"));
     </script>
 </body>
 

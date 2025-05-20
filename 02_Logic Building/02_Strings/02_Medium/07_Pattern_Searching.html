@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function search(T,P) {
+
+            let m = P.length;
+            let n = T.length;
+
+            for (let i = 0; i <= n - m; i++) {
+                let match = true;
+
+                for (let j = 0; j < m; j++) {
+                    if (T[i + j] !== P[j]) {
+                        match = false;
+                        break;
+                    }
+                }
+
+                if (match) {
+                    console.log("Pattern found at index " + i);
+                }
+            }
+        }
+
+        let T = "AABAACAADAABAABA";
+        let P = "AABA";
+        search(T, P);
+    </script>
+</body>
+</html>
