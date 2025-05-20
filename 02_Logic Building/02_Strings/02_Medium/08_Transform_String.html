@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform One String to Another using Minimum Number of Given Operation</title>
+</head>
+
+<body>
+    <script>
+        function minOperationsToTransform(A, B) {
+
+            if (A.length !== B.length) return -1;
+
+            let i = A.length - 1;
+            let j = B.length - 1;
+            let count = 0;
+
+            while (i >= 0) {
+                if (A[i] === B[j]) {
+                    j--;
+                } else {
+                    count++;
+                }
+                i--;
+            }
+
+            return count;
+        }
+
+        console.log(minOperationsToTransform("ABD", "BAD"));
+    </script>
+</body>
+
+</html>
