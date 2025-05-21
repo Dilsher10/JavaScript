@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function maxProfit(prices) {
+
+            if (!Array.isArray(prices) || prices.length === 0) return 0;
+
+            let maxProfit = 0;
+            let minPrice = prices[0];
+
+            for (let i = 1; i < prices.length; i++) {
+
+                if (prices[i] > minPrice) {
+                    const profit = prices[i] - minPrice;
+                    maxProfit = Math.max(maxProfit, profit);
+                }
+
+                minPrice = Math.min(minPrice, prices[i])
+            }
+
+            return maxProfit;
+        }
+
+        prices = [7, 1, 5, 3, 6, 4]
+        console.log(maxProfit(prices));
+    </script>
+</body>
+
+</html>
