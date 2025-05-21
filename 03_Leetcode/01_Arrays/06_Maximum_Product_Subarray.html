@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function maxProduct(nums){
+            let maxProduct = 1;
+
+            for (let i = 0; i < nums.length; i++) {
+                let currProduct = 1;
+                for (let j = 0; j < nums.length; j++) {
+                    currProduct *= nums[j];
+                    maxProduct = Math.max(maxProduct,currProduct)
+                }
+            }
+
+            return maxProduct;
+        }
+        nums = [2,3,-2,4];
+        console.log(maxProduct(nums));
+        
+    </script>
+</body>
+</html>
