@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function maxArea(height) {
+
+            let left = 0;
+            let right = height.length - 1;
+            let maxWater = 0;
+
+            while (left < right) {
+                let w = right - left;
+                let h = Math.min(height[left], height[right]);
+                let currWater = w * h;
+                maxWater = Math.max(maxWater, currWater);
+
+                if (height[left] < height[right]) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+
+            return maxWater;
+        }
+
+        height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+        console.log(maxArea(height));
+
+    </script>
+</body>
+
+</html>
