@@ -10,25 +10,36 @@
 <body>
     <script>
         function threeSum(nums) {
-            let result = [];
-            let seen = new Set();
 
-            for (let i = 0; i < nums.length; i++) {
-                for (let j = i + 1; j < nums.length; j++) {
-                    for (let k = j + 1; k < nums.length; k++) {
-                        if (i !== j && i !== k && j !== k) {
-                            let sum = nums[i] + nums[j] + nums[k];
-                            if (sum === 0) {
-                                let triplets = [nums[i], nums[j], nums[k]].sort((a, b) => a - b);
-                                let key = triplets.toString();
-                                if (!seen.has(key)) {
-                                    seen.add(key);
-                                    result.push(triplets);
-                                }
-                            }
-                        }
+            nums.sort((a, b) => a - b);
+
+            const result = [];
+
+            for (let i = 0; i < nums.length - 2; i++) {
+
+                if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+                let left = i + 1;
+                let right = nums.length - 1;
+
+                while (left < right) {
+                    const sum = nums[i] + nums[left] + nums[right];
+
+                    if (sum === 0) {
+                        result.push([nums[i], nums[left], nums[right]]);
+
+                        while (nums[left] === nums[left + 1]) left++;
+                        while (nums[right] === nums[right - 1]) right++;
+
+                        left++;
+                        right--;
+                    } else if (sum < 0) {
+                        left++;
+                    } else {
+                        right--;
                     }
                 }
+
             }
 
             return result;
