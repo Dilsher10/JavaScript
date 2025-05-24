@@ -9,35 +9,30 @@
     <script>
         function minWindow(s, t) {
 
-            let minLen = Infinity;
-            let answer = "";
+            if (t.length > s.length) return "";
+
+            let result = "";
+            let minLength = Infinity;
 
             for (let i = 0; i < s.length; i++) {
                 for (let j = i + 1; j <= s.length; j++) {
-                    let sub = s.slice(i, j);
-                    let temp = sub;
+                    let subString = s.slice(i, j);
 
-                    let isValid = true;
-                    for (let k = 0; k < t.length; k++) {
-                        let ch = t[k];
-                        let index = temp.indexOf(ch);
-                        if (index === -1) {
-                            isValid = false;
-                            break;
-                        } else {
-                            // remove character so duplicates are checked correctly
-                            temp = temp.slice(0, index) + temp.slice(index + 1);
+                    let tempT = t;
+
+                    for (let char of subString) {
+                        if (tempT.includes(char)) {
+                            tempT = tempT.replace(char, "");
                         }
                     }
 
-                    if (isValid && sub.length < minLen) {
-                        minLen = sub.length;
-                        answer = sub;
+                    if (tempT.length === 0 && subString.length < minLength) {
+                        result = subString;
+                        minLength = subString.length;
                     }
                 }
             }
-
-            return answer;
+            return result;
         }
         console.log(minWindow("ADOBECODEBANC", "ABC"));
     </script>
