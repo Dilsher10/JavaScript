@@ -6,6 +6,49 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        function minWindow(s, t) {
+            if (t.length > s.length) return "";
+
+            let need = {};
+            for (let char of t) {
+                need[char] = (need[char] || 0) + 1;
+            }
+
+            let left = 0, right = 0;
+            let needCount = t.length;
+            let minLen = Infinity, minStart = 0;
+
+            while (right < s.length) {
+                let char = s[right];
+                if (need[char] > 0) {
+                    needCount--;
+                }
+                need[char] = (need[char] || 0) - 1;
+
+                right++;
+
+                while (needCount === 0) {
+                    if (right - left < minLen) {
+                        minLen = right - left;
+                        minStart = left;
+                    }
+
+                    let leftChar = s[left];
+                    need[leftChar] = (need[leftChar] || 0) + 1;
+                    if (need[leftChar] > 0) {
+                        needCount++;
+                    }
+                    left++;
+                }
+            }
+
+            return minLen === Infinity ? "" : s.slice(minStart, minStart + minLen);
+        }
+        
+        s = "ADOBECODEBANC", t = "ABC";
+        console.log(minWindow(s, t));
+
+    </script>
 </body>
 </html>
