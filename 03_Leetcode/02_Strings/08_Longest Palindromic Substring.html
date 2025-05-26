@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function longestPalindrome(s) {
+
+            let longestSubString = "";
+
+            for (let i = 0; i < s.length; i++) {
+
+                // Odd length palindrome
+                let left = i, right = i;
+                while (left >= 0 && right < s.length && s[left] === s[right]) {
+                    let currentSubString = s.slice(left, right + 1)
+                    if (currentSubString.length > longestSubString.length) {
+                        longestSubString = currentSubString;
+                    }
+                    left--;
+                    right++;
+                }
+
+                // Even length palindrome
+                left = i;
+                right = i + 1;
+                while (left >= 0 && right < s.length && s[left] === s[right]) {
+                    let currentSubString = s.slice(left, right + 1)
+                    if (currentSubString.length > longestSubString.length) {
+                        longestSubString = currentSubString;
+                    }
+                    left--;
+                    right++;
+                }
+            }
+
+            return longestSubString;
+        }
+
+
+        s = "cbbd"
+        console.log(longestPalindrome(s));
+
+    </script>
+</body>
+
+</html>
