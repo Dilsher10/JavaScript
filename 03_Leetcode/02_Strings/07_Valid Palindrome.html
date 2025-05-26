@@ -15,13 +15,15 @@
             let right = s.length - 1;
 
             while (left < right) {
-            
-                while (left < right && !(/[a-zA-Z0-9]/).test(s[left])) {
+
+                if (!(/[a-zA-Z0-9]/).test(s[left])) {
                     left++;
+                    continue;
                 }
 
-                while (left < right && !(/[a-zA-Z0-9]/).test(s[right])) {
+                if (!(/[a-zA-Z0-9]/).test(s[right])) {
                     right--;
+                    continue;
                 }
 
                 if (s[left].toLowerCase() !== s[right].toLowerCase()) {
