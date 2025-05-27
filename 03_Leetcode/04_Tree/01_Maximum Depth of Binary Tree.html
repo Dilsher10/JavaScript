@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        
+        // Step 1: Define the TreeNode structure
+
+        function TreeNode(val, left = null, right = null) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+
+        // Step 2: Create a sample binary tree
+        // Example Tree:
+        //       1
+        //      / \
+        //     2   3
+        //    /
+        //   4
+
+        const root = new TreeNode(5);
+        root.left = new TreeNode(2, new TreeNode(4));
+        root.right = new TreeNode(3);
+
+
+        // Step 3: Define the maxDepth function (BFS approach)
+
+        var maxDepth = function (root) {
+            
+            if (root === null) return 0;
+
+            let queue = [root];
+            let depth = 0;
+
+            while (queue.length > 0) {
+                let levelSize = queue.length; // Number of nodes at current level
+
+                for (let i = 0; i < levelSize; i++) {
+                    let node = queue.shift(); // Remove front node
+
+                    if (node.left) queue.push(node.left);
+                    if (node.right) queue.push(node.right);
+                }
+
+                depth++; // Increase depth after finishing a level
+            }
+
+            return depth;
+        };
+
+
+        // Step 4: View output
+        console.log("Max Depth:", maxDepth(root));  // Output: Max Depth: 3
+
+    </script>
 </body>
+
 </html>

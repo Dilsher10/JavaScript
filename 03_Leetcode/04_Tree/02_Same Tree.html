@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        // METHOD #1 Breadth-First Search - Iterative BFS Approach using a Queue
+
+        function isSameTree(p, q) {
+
+            const queue = [[p, q]];
+
+            while (queue.length > 0) {
+
+                const [node1, node2] = queue.shift();
+
+                if (!node1 && !node2) continue;
+
+                if (!node1 || !node2 || node1.val !== node2.val) return false;
+
+                queue.push([node1.left, node2.left]);
+                queue.push([node1.right, node2.right]);
+            }
+
+            return true;
+        }
+
+        p = [1, 2, 3], q = [1, 2, 3]
+        console.log(isSameTree(p, q));
+
+
+
+
+        // // METHOD #2 Recursive DFS (Depth-First Search)
+
+        function isSameTree(p, q) {
+            // If both nodes are null, trees are the same here
+            if (!p && !q) return true;
+
+            // If one of the nodes is null or values don't match, not the same
+            if (!p || !q || p.val !== q.val) return false;
+
+            // Recursively check left and right subtrees
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }
+
+        p = [1, 2, 3], q = [1, 2, 3]
+        console.log(isSameTree(p, q));
+
+
+    </script>
+</body>
+
+</html>
