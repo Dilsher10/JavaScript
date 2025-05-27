@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function levelOrder(root) {
+            if (!root) return [];
+
+            let result = [];
+            let queue = [root];
+
+            while (queue.length > 0) {
+                let levelSize = queue.length;
+                let level = [];
+
+                for (let i = 0; i < levelSize; i++) {
+                    let node = queue.shift(); // dequeue
+                    level.push(node.val);
+
+                    if (node.left) queue.push(node.left);
+                    if (node.right) queue.push(node.right);
+                }
+
+                result.push(level);
+            }
+
+            return result;
+        };
+    </script>
+</body>
+</html>
