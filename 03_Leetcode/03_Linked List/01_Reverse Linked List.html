@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        function reverseList(head) {
+
+            let prev = null;
+            let current = head;
+            
+
+            while (current !== null) {
+                const next = current.next;  // Save next node
+                current.next = prev;        // Reverse the link
+                prev = current;             // Move prev forward
+                current = next;             // Move current forward
+            }
+
+            return prev;  // New head
+        }
+
+        head = [1, 2, 3, 4, 5];
+        console.log(reverseList(head));
+    </script>
 </body>
+
 </html>
