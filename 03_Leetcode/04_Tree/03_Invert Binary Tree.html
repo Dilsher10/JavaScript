@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // METHOD 1 (Iterative BFS using Queue)
+
+        var invertTree = function (root) {
+            if (root === null) return null;
+
+            const queue = [root];
+
+            while (queue.length > 0) {
+                const current = queue.shift();
+
+                // Swap children
+                const temp = current.left;
+                current.left = current.right;
+                current.right = temp;
+
+                // Add children to queue if they exist
+                if (current.left) queue.push(current.left);
+                if (current.right) queue.push(current.right);
+            }
+
+            return root;
+        };
+        
+
+
+
+
+        // METHOD 2 (Recursive DFS)
+
+        var invertTree = function (root) {
+            if (root === null) return null;
+
+            // Swap left and right
+            let temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+
+            // Recurse on left and right subtrees
+            invertTree(root.left);
+            invertTree(root.right);
+
+            return root;
+        };
+
+    </script>
+</body>
+
+</html>
