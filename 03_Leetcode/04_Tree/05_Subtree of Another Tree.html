@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var isSubtree = function (root, subRoot) {
+            if (!root) return false;
+
+            let queue = [root];
+
+            while (queue.length > 0) {
+                let node = queue.shift();
+
+                if (node.val === subRoot.val) {
+                    // Compare using BFS with two queues
+                    let q1 = [node];
+                    let q2 = [subRoot];
+                    let match = true;
+
+                    while (q1.length > 0 && q2.length > 0) {
+                        let n1 = q1.shift();
+                        let n2 = q2.shift();
+
+                        if (!n1 && !n2) continue;
+                        if (!n1 || !n2 || n1.val !== n2.val) {
+                            match = false;
+                            break;
+                        }
+
+                        q1.push(n1.left);
+                        q1.push(n1.right);
+
+                        q2.push(n2.left);
+                        q2.push(n2.right);
+                    }
+
+                    if (match && q1.length === q2.length) return true;
+                }
+
+                if (node.left) queue.push(node.left);
+                if (node.right) queue.push(node.right);
+            }
+
+            return false;
+        };
+
+    </script>
+</body>
+</html>
