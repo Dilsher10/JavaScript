@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function isValidBST(root) {
+            const stack = [];
+            let current = root;
+            let prev = null;
+
+            while (stack.length > 0 || current !== null) {
+                // Go as left as possible
+                while (current !== null) {
+                    stack.push(current);
+                    current = current.left;
+                }
+
+                current = stack.pop();
+
+                // Check if current node's value is greater than the previous value
+                if (prev !== null && current.val <= prev) {
+                    return false;
+                }
+
+                prev = current.val;
+                current = current.right;
+            }
+
+            return true;
+        }
+
+    </script>
+</body>
+
+</html>
