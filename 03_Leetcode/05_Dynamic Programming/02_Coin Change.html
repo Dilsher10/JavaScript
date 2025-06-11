@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function coinChange(coins, amount) {
+
+            // Initialize the dp array to store the minimum coins for each amount.
+            const dp = Array(amount + 1).fill(Infinity);
+            dp[0] = 0;  // Base case: 0 amount requires 0 coins.
+
+            // Loop through each coin and update the dp array.
+            for (let i = 0; i < coins.length; i++) {
+                for (let j = coins[i]; j <= amount; j++) {
+                    dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
+                }
+            }
+
+            // If dp[amount] is still Infinity, it means we can't make up that amount with the given coins.
+            return dp[amount] === Infinity ? -1 : dp[amount];
+        }
+
+        // Example usage:
+        const coins = [1, 2, 5];  // Coin denominations
+        const amount = 11;  // Total amount
+        console.log(coinChange(coins, amount));  // Output: 3 (because 5 + 5 + 1 = 11)
+
+    </script>
+</body>
+
+</html>
