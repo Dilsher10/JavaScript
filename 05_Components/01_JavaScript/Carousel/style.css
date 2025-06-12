@@ -1,0 +1,10 @@
+.container{
+    max-width: 960px;
+    margin: 40px auto 0 auto;
+}
+
+.container .slider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
