@@ -1,0 +1,64 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accordion | Accessible UI Component</title>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="A clean, accessible accordion component built with HTML, CSS, and JavaScript." />
+    <meta name="author" content="Your Name" />
+
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome (Latest version recommended for security and icon support) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- JS -->
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <main>
+        <section aria-labelledby="accordion-heading">
+            <h1 id="accordion-heading">FAQs</h1>
+
+            <div class="accordion">
+                <button class="question" aria-expanded="false" aria-controls="answer1" id="question1">
+                    <span>Lorem ipsum dolor sit amet?</span>
+                    <i class="icon fa fa-caret-down"></i>
+                </button>
+                <div class="answer" id="answer1" role="region" aria-labelledby="question1">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident rem corrupti!</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="question" aria-expanded="false" aria-controls="answer2" id="question2">
+                    <span>How does the accordion work?</span>
+                    <i class="icon fa fa-caret-down"></i>
+                </button>
+                <div class="answer" id="answer2" role="region" aria-labelledby="question2">
+                    <p>It uses semantic HTML, accessibility features, and toggle logic in JavaScript.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="question" aria-expanded="false" aria-controls="answer3" id="question3">
+                    <span>Can I open multiple items?</span>
+                    <i class="icon fa fa-caret-down"></i>
+                </button>
+                <div class="answer" id="answer3" role="region" aria-labelledby="question3">
+                    <p>No, only one item opens at a time to keep the interface clean.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
