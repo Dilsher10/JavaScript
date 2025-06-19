@@ -12,13 +12,7 @@ const ACCEPTED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 // Clicking the uploader triggers the hidden file input
 uploader.addEventListener('click', () => fileInput.click());
 
-// Allow keyboard interaction (Enter/Space)
-uploader.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        fileInput.click();
-    }
-});
+
 
 // Drag over styling
 uploader.addEventListener('dragover', (e) => {
