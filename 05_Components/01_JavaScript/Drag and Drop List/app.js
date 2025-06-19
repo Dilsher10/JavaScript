@@ -19,13 +19,21 @@ list.addEventListener('dragend', (e) => {
 
 list.addEventListener('dragover', (e) => {
   e.preventDefault();
+
   const target = e.target.closest('li');
+
   if (!target || target === draggedItem) return;
 
+  // Gets the position of the target element on the screen:
   const { top, height } = target.getBoundingClientRect();
+
+  // Decides whether the cursor is:
   const before = e.clientY < top + height / 2;
+
+  // Calculates where to insert the dragged item:
   const refNode = before ? target : target.nextSibling;
 
+  // Only insert if not already in that position
   if (refNode !== draggedItem) {
     list.insertBefore(draggedItem, refNode);
   }
