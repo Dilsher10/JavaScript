@@ -82,16 +82,3 @@ input[type="file"] {
     border-radius: 5px;
 }
 
-/* Error messages */
-.error {
-    color: red;
-    margin-top: 10px;
-    font-size: 13px;
-}
-
-/* Upload status (Uploading/Uploaded) */
-.status {
-    font-size: 12px;
-    color: #888;
-    margin-top: 4px;
-}
