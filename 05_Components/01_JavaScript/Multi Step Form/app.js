@@ -12,8 +12,14 @@
      * Show the step at the given index and hide others
      */
     function showStep(index) {
+        
+        // Show current, hide others
         steps.forEach((step, i) => {
-            step.hidden = i !== index; // Show current, hide others
+            if (i === index) {
+                step.hidden = false;
+            } else {
+                step.hidden = true;
+            }
         });
 
         // Hide Back button on first step
