@@ -5,29 +5,20 @@ let page = 1;
 const limit = 10;
 let loading = false;
 let isEnd = false;
+let timeoutId = null; // for throttling
 
-
-// Throttle Utility 
-function throttle(fn, delay) {
-    let timer = null;
-    return function (...args) {
-        if (timer) return;
-        timer = setTimeout(() => {
-            fn(...args);
-            timer = null;
-        }, delay);
-    };
-}
-
-
-// Fetch Posts
+// ✅ Fetch posts from API
 async function fetchPosts(page, limit) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`);
-    if (!response.ok) throw new Error('Failed to fetch');
-    return await response.json();
+    try {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`);
+        if (!res.ok) throw new Error('Failed to fetch');
+        return await res.json();
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-// Render Posts
+// ✅ Render posts on page
 function renderPosts(posts) {
     posts.forEach(post => {
         const div = document.createElement('div');
@@ -37,43 +28,45 @@ function renderPosts(posts) {
     });
 }
 
-// Load More Posts
+// ✅ Load more posts
 async function loadMorePosts() {
     if (loading || isEnd) return;
-    loading = true;
-    loader.textContent = 'Loading...';
 
-    try {
-        const posts = await fetchPosts(page, limit);
-        if (posts.length === 0) {
-            loader.textContent = 'No more posts.';
-            isEnd = true;
-            observer.disconnect();
-            return;
-        }
-        renderPosts(posts);
-        page++;
-    } catch (error) {
-        loader.textContent = 'Error loading posts';
-        console.error(error);
-    } finally {
-        loading = false;
+    loading = true;
+
+    const posts = await fetchPosts(page, limit);
+
+    if (!posts || posts.length === 0) {
+        loader.textContent = 'No more posts';
+        isEnd = true;
+        observer.disconnect(); // stop observing
+        return;
     }
+
+    renderPosts(posts);
+    page++;
+    loading = false;
 }
 
-// Throttled Load Function
-const throttledLoad = throttle(loadMorePosts, 500);
+// ✅ Throttled Observer Callback using setTimeout only
+function handleIntersect(entries) {
+    if (timeoutId) return; // skip if waiting
 
+    timeoutId = setTimeout(() => {
+        if (entries[0].isIntersecting) {
+            loadMorePosts();
+        }
+        timeoutId = null; // reset timeout
+    }, 500); // 500ms throttle
+}
 
-// Intersection Observer
-const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-        throttledLoad();
-    }
-}, {
+// ✅ Setup IntersectionObserver
+const observer = new IntersectionObserver(handleIntersect, {
     root: null,
-    threshold: 0.1
+    threshold: 0.1,
 });
 
 observer.observe(loader);
-loadMorePosts(); // Initial load
+
+// ✅ Load first posts
+loadMorePosts();
