@@ -7,7 +7,7 @@ let loading = false;
 let isEnd = false;
 
 
-// === Throttle Utility ===
+// Throttle Utility 
 function throttle(fn, delay) {
     let timer = null;
     return function (...args) {
@@ -20,14 +20,14 @@ function throttle(fn, delay) {
 }
 
 
-// === Fetch Posts ===
+// Fetch Posts
 async function fetchPosts(page, limit) {
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`);
     if (!response.ok) throw new Error('Failed to fetch');
     return await response.json();
 }
 
-// === Render Posts ===
+// Render Posts
 function renderPosts(posts) {
     posts.forEach(post => {
         const div = document.createElement('div');
@@ -37,7 +37,7 @@ function renderPosts(posts) {
     });
 }
 
-// === Load More Posts ===
+// Load More Posts
 async function loadMorePosts() {
     if (loading || isEnd) return;
     loading = true;
@@ -61,10 +61,11 @@ async function loadMorePosts() {
     }
 }
 
-// === Throttled Load Function ===
+// Throttled Load Function
 const throttledLoad = throttle(loadMorePosts, 500);
 
-// === Intersection Observer ===
+
+// Intersection Observer
 const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
         throttledLoad();
