@@ -1,0 +1,26 @@
+/* Container for tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Base styles for tab buttons */
+[role="tab"] {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+}
+
+/* Highlight selected tab */
+[role="tab"][aria-selected="true"] {
+  background: #ccc;
+  font-weight: bold;
+}
+
+/* Style for panel content */
+[role="tabpanel"] {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-top: 1rem;
+}

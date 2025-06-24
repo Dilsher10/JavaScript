@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Tab list with ARIA role -->
+    <div class="tabs" role="tablist">
+        <!-- Each button is a tab, linked to its panel via aria-controls -->
+        <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">Tab 1</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">Tab 2</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">Tab 3</button>
+    </div>
+
+    <!-- Tab panels, one for each tab -->
+    <div class="tab-panels">
+        <!-- Panel is visible by default -->
+        <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">Content for Tab 1</div>
+        <!-- Panels are hidden by default -->
+        <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>Content for Tab 2</div>
+        <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>Content for Tab 3</div>
+    </div>
+
+</body>
+
+</html>
