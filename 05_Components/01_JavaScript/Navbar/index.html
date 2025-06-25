@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navbar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Accessible Navigation Bar -->
+  <nav class="navbar" aria-label="Main Navigation">
+    <a href="#" class="logo">MySite</a>
+
+    <!-- Toggle Button for Mobile -->
+    <button class="menu-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <!-- Navigation Links -->
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#home" role="menuitem">Home</a></li>
+      <li><a href="#about" role="menuitem">About</a></li>
+      <li><a href="#services" role="menuitem">Services</a></li>
+      <li><a href="#contact" role="menuitem">Contact</a></li>
+    </ul>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

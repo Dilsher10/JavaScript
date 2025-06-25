@@ -1,0 +1,74 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  padding: 1rem 2rem;
+  color: #fff;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+/* Nav Menu Styles */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute; /* 👈 fixes floating */
+    top: 60px;           /* 👈 adjust based on navbar height */
+    left: 0;
+    background: #222;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+    width: 100%;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+}
+
