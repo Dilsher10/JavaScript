@@ -47,7 +47,24 @@ function renderTodos() {
             saveAndRender(); // Save and re-render the list
         };
 
-        // Append delete button to list item and add it to the list
+
+        // Edit button
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Edit';
+        editBtn.onclick = () => {
+            const newValue = prompt('Edit todo:', todo);
+            if (newValue !== null) {
+                const trimmed = newValue.trim();
+                if (trimmed) {
+                    todos[index] = trimmed;
+                    saveAndRender();
+                }
+            }
+        };
+
+
+        // Append delete and edit buttons to list item and add it to the list
+        li.appendChild(editBtn)
         li.appendChild(delBtn);
         list.appendChild(li);
     });
