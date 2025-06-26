@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Get all tabs and the tablist container
     const tabs = document.querySelectorAll('[role="tab"]');
-    const tabList = document.querySelector('[role="tablist"]');
 
     // Loop through each tab
     tabs.forEach(tab => {
