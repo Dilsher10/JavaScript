@@ -45,7 +45,6 @@ function renderResults(items) {
   items.forEach(item => {
     const div = document.createElement('div');
     div.textContent = item.title;
-    div.className = 'result-item';
     div.onclick = () => {
       input.value = item.title;
       clearResults();
