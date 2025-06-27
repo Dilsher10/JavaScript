@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Navbar</title>
+  <title>Accessible Nav</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <nav class="navbar" aria-label="Main Navigation" role="navigation">
+    <a href="#" class="logo">Logo</a>
 
-  <!-- Accessible Navigation Bar -->
-  <nav class="navbar" aria-label="Main Navigation">
-    <a href="#" class="logo">MySite</a>
-
-    <!-- Toggle Button for Mobile -->
-    <button class="menu-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <button 
+      class="menu-toggle" 
+      aria-controls="nav-menu" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation menu"
+    >
+      <span class="visually-hidden">Toggle Menu</span>
       ☰
     </button>
 
-    <!-- Navigation Links -->
-    <ul class="nav-menu" id="nav-menu">
-      <li><a href="#home" role="menuitem">Home</a></li>
-      <li><a href="#about" role="menuitem">About</a></li>
-      <li><a href="#services" role="menuitem">Services</a></li>
-      <li><a href="#contact" role="menuitem">Contact</a></li>
+    <ul class="nav-menu" id="nav-menu" hidden>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 

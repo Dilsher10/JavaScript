@@ -1,9 +1,27 @@
-// Select the toggle button and nav menu
-const toggleBtn = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
 
-// Add click event to toggle menu visibility
-toggleBtn.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('open');
-  toggleBtn.setAttribute('aria-expanded', isOpen);
+    if (!toggleBtn || !navMenu) return;
+
+    const toggleMenu = () => {
+        const isOpen = navMenu.hasAttribute('hidden') === false;
+        if (isOpen) {
+            navMenu.setAttribute('hidden', '');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+        } else {
+            navMenu.removeAttribute('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+        }
+    };
+
+    toggleBtn.addEventListener('click', toggleMenu);
+
+    // Optional: support Enter and Space keys
+    toggleBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+        }
+    });
 });
