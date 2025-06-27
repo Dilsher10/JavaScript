@@ -10,9 +10,10 @@ let timeoutId = null; // for throttling
 // ✅ Fetch posts from API
 async function fetchPosts(page, limit) {
     try {
-        const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`);
+        const res = await fetch(`https://dummyjson.com/posts?page=${page}&limit=${limit}`);
         if (!res.ok) throw new Error('Failed to fetch');
-        return await res.json();
+        const data = await res.json();
+        return data.posts;
     } catch (error) {
         console.error(error);
     }
