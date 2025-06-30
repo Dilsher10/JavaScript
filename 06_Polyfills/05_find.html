@@ -20,9 +20,16 @@
                     return this[i];
                 }
             }
+
             return undefined;
         };
 
+
+        const nums = [1, 2, 3, 4, 5];
+        let found = nums.myFind((num, index, array) => {
+            return num > 3;
+        });
+        console.log(found);;
     </script>
 </body>
 
