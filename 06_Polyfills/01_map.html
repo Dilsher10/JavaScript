@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Array.prototype.myMap = function (cb) {
+            let newArray = [];
+
+            for (let i = 0; i < this.length; i++) {
+                newArray.push(cb(this[i], i, this));
+            }
+
+            return newArray;
+        }
+
+        const nums = [1, 2, 3, 4, 5];
+
+        nums.myMap((num, i, arr) => {
+            console.log(num);
+        })
+    </script>
+</body>
+
+</html>
