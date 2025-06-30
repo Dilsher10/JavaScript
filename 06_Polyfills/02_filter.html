@@ -9,25 +9,30 @@
 
 <body>
     <script>
-        Array.prototype.myFilter = function (cb) {
-            let temp = [];
+        Array.prototype.myFilter = function (callback) {
+            if (typeof callback !== 'function') {
+                throw new TypeError(callback + ' is not a function');
+            }
+
+            const result = [];
 
             for (let i = 0; i < this.length; i++) {
-                if (cb(this[i], i, this)) {
-                    temp.push(this[i]);
+                if (this.hasOwnProperty(i)) {
+                    if (callback(this[i], i, this)) {
+                        result.push(this[i]);
+                    }
                 }
             }
 
-            return temp;
-        }
+            return result;
+        };
 
 
-        
 
         const nums = [1, 2, 3, 4, 5];
 
         const result = nums.myFilter((num) => {
-            return num > 2;
+            return num > 4;
         });
 
         console.log(result);

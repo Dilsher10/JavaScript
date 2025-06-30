@@ -9,15 +9,28 @@
 
 <body>
     <script>
-        Array.prototype.myReduce = function (cb, initialValue) {
-            let accumulator = initialValue;
+        Array.prototype.myReduce = function (callback, initialValue) {
 
-            for (let i = 0; i < this.length; i++) {
-                accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];
+            if (typeof callback !== 'function') {
+                throw new TypeError(callback + ' is not a function');
             }
 
+            let accumulator = initialValue;
+            let startIndex = 0;
+
+            if (accumulator === undefined) {
+                if (this.length === 0) throw new TypeError("Reduce of empty array with no initial value");
+                accumulator = this[0];
+                startIndex = 1;
+            }
+
+            for (let i = startIndex; i < this.length; i++) {
+                if (this.hasOwnProperty(i)) {
+                    accumulator = callback(accumulator, this[i], i, this);
+                }
+            }
             return accumulator;
-        }
+        };
 
 
         const nums = [1, 2, 3, 4, 5];

@@ -9,25 +9,20 @@
 
 <body>
     <script>
-        Array.prototype.myForEach = function (callback) {
+        Array.prototype.myFind = function (callback) {
 
             if (typeof callback !== 'function') {
                 throw new Error('Not a function');
             }
 
             for (let i = 0; i < this.length; i++) {
-                if (this.hasOwnProperty(i)) {
-                    callback(this[i], i, this);
+                if (this.hasOwnProperty(i) && callback(this[i], i, this)) {
+                    return this[i];
                 }
             }
-        }
+            return undefined;
+        };
 
-
-        const nums = [1, 2, 3, 4, 5];
-
-        nums.myForEach((num, index, array) => {
-            console.log(num);
-        })
     </script>
 </body>
 

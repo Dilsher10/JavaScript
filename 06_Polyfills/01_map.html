@@ -9,15 +9,22 @@
 
 <body>
     <script>
-        Array.prototype.myMap = function (cb) {
+        Array.prototype.myMap = function (callback) {
+            if (typeof callback !== 'function') {
+                throw new TypeError(callback + ' is not a function');
+            }
+
             let newArray = [];
 
             for (let i = 0; i < this.length; i++) {
-                newArray.push(cb(this[i], i, this));
+                if (this.hasOwnProperty(i)) {
+                    newArray.push(callback(this[i], i, this));
+                }
             }
 
             return newArray;
-        }
+        };
+
 
         const nums = [1, 2, 3, 4, 5];
 
