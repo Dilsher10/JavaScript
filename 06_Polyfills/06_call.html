@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        Function.prototype.myCall = function (context, ...args) {
+
+            // Check if `this` is actually a function
+            if (typeof this !== 'function') {
+                throw new TypeError(this + ' is not a function');
+            }
+
+            // If context is null or undefined, default to the global object (window/globalThis)
+            context = context || globalThis;
+
+            // Create a unique property name using Symbol to avoid overwriting existing properties
+            const fnSymbol = Symbol();
+
+            // Assign the function (`this`) as a temporary method of the context object
+            context[fnSymbol] = this;
+
+            // Call the function with the provided arguments and store the result
+            const result = context[fnSymbol](...args);
+
+            // Remove the temporary function property from the context object
+            delete context[fnSymbol];
+
+            // Return the result of the function call
+            return result;
+        };
+
+
+        function greet(msg) {
+            return msg + ', ' + this.name;
+        }
+
+        const user = { name: 'Dilsher' };
+
+        console.log(greet.myCall(user, 'Hello')); // Output: "Hello, Dilsher"
+
+    </script>
+</body>
+
+</html>

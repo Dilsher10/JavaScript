@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myApply = function (context, args = []) {
+
+            if (typeof this !== 'function') {
+                throw new TypeError(this + ' is not a function');
+            }
+
+            // If no context is provided, default to the global object (window in browser, global in Node.js)
+            context = context || globalThis;
+
+            // Create a unique property name to avoid overwriting any existing property
+            const fnSymbol = Symbol();
+
+            // Assign the function (this) as a temporary method of the context object
+            context[fnSymbol] = this;
+
+            // Call the function with the provided arguments array using spread syntax
+            const result = context[fnSymbol](...args);
+
+            // Remove the temporary method from the context to clean up
+            delete context[fnSymbol];
+
+            // Return the result of the function call
+            return result;
+        };
+
+
+
+        function introduce(greeting, punctuation) {
+            return `${greeting}, I am ${this.name}${punctuation}`;
+        }
+
+        const person = { name: 'Dilsher' };
+
+        console.log(introduce.myApply(person, ['Hi', '!'])); // Output: "Hi, I am Dilsher!"
+
+    </script>
+</body>
+
+</html>
