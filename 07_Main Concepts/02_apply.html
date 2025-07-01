@@ -17,11 +17,67 @@
 
 
 
+        // Example 1:
+        function greet(greeting, punctuation) {
+            console.log(`${greeting}, ${this.name}${punctuation}`);
+        }
+
+        const person = { name: 'Dilsher' };
+
+        greet.apply(person, ['Hello', '!']);
+
+
+
+        // Example 2: This is an example of constructor function inheritance using apply().
+        function Animal(name) {
+            this.name = name;
+        }
+
+        function Dog(name, breed) {
+            Animal.apply(this, [name]);
+            this.breed = breed;
+        }
+        const dog = new Dog('Buddy', 'Labrador');
+        console.log(dog);
+
+
+
+        // Example 3: This is class-based inheritance in JavaScript using ES6:
+        class Animal {
+            constructor(name) {
+                this.name = name;
+                this.type = type;
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(name, breed) {
+                super(name);
+                this.breed = breed;
+            }
+        }
+
+        const classDog = new Dog('Buddy', 'Labrador');
+        console.log(classDog);
+        
+
+
+
+        // Example 4:
         function maxSalary() {
             return Math.max.apply(null, arguments);
         }
 
         console.log(maxSalary(50000, 75000, 120000));
+
+
+
+
+
+
+
+
+
 
 
 
@@ -37,14 +93,13 @@
 
         // Using apply() (sets this explicitly):
 
-
-        function greet(greeting) {
-            console.log(`${greeting}, my name is ${this.name}`);
+        function greetOne(greeting, punctuation) {
+            console.log(`${greeting}, ${this.name}${punctuation}`);
         }
 
         const personOne = { name: 'Dilsher' };
 
-        greet.apply(personOne, ['Hello']);
+        greetOne.apply(personOne, ['Hello', '!']);
 
         // Output: Hello, my name is 
         // In this case, apply() sets this to person and passes 'Hello' as an argument.
@@ -58,13 +113,13 @@
 
         // Using spread operator (does NOT set this):
 
-        function greet(greeting) {
+        function greetTwo(greeting) {
             console.log(`${greeting}, my name is ${this.name}`);
         }
 
-        const person = { name: 'Dilsher' };
+        const personTwo = { name: 'Dilsher' };
 
-        greet(...['Hello']);
+        greetTwo(...['Hello']);
 
         // Output: Hello, my name is undefined (or error in strict mode)
 

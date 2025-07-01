@@ -44,6 +44,19 @@
 
 
 
+
+        function greet(greeting, punctuation) {
+            console.log(`${greeting}, ${this.name}${punctuation}`);
+        }
+
+        const person = { name: 'Dilsher' };
+
+        const greetDilsher = greet.bind(person, 'Hey', '?');
+        greetDilsher();
+
+
+
+
         const button = {
             text: 'Click me',
             handleClick: function () {
@@ -53,6 +66,13 @@
 
         const boundClick = button.handleClick.bind(button);
         setTimeout(boundClick, 1000);
+
+
+
+
+        //  You don’t use .bind() for inheritance.
+
+        //  because bind() is used to fix the value of this in a function — not to inherit from another function or class.
     </script>
 </body>
 

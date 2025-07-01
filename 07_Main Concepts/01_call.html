@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             background-color: #333;
         }
     </style>
@@ -49,6 +49,20 @@
         // Takes arguments individually.
 
 
+        // Example 1:
+
+        function greet(greeting, punctuation) {
+            console.log(`${greeting}, ${this.name}${punctuation}`);
+        }
+
+        const person = { name: 'Dilsher' };
+
+        greet.call(person, 'Hello', '!');
+
+
+
+        // Example 2:
+
         function introduce(language) {
             console.log(`Hi, I'm ${this.name}, and I code in ${language}.`);
         }
@@ -65,6 +79,7 @@
 
 
 
+
         // Now refactor this using classes
 
         // This usually comes up when you've used call() or apply() for inheritance or method borrowing, and 
@@ -72,39 +87,61 @@
 
 
 
-        // This is Original using call()
+        // This is an example of constructor function inheritance using call().
 
         function Animal(name) {
+            // Assign the 'name' property to the current instance
             this.name = name;
         }
+
+        // Constructor function for "Dog", which inherits from "Animal"
         function Dog(name, breed) {
+            // Call the Animal constructor in the context of Dog
+            // This copies the 'name' property from Animal to the Dog instance
             Animal.call(this, name); // inherit from Animal
+
+            // Add a new property specific to Dog
             this.breed = breed;
         }
+
+        // Create an instance of Dog
         const dogOne = new Dog('Buddy', 'Labrador');
+        // dogOne now has both 'name' and 'breed' properties
 
 
 
 
 
         // This is Refactored Using ES6 class Syntax:
+        // This is class-based inheritance in JavaScript using ES6:
 
+
+        // Base class (parent)
         class Animal {
             constructor(name) {
+                // Initialize the 'name' property for all animals
                 this.name = name;
             }
         }
 
+        // Creates a child class that inherits from Animal.
         class Dog extends Animal {
             constructor(name, breed) {
+                // Call the parent class constructor to set the 'name' property
                 super(name); // same as Animal.call(this, name)
+
+                // Add a new property specific to Dog
                 this.breed = breed;
             }
         }
 
+        // Create an instance of Dog
         const dog = new Dog('Buddy', 'Labrador');
-        console.log(dog.name);  // Buddy
-        console.log(dog.breed); // Labrador
+        // dog object now has both 'name' and 'breed' properties
+
+
+
+
 
 
         // Why They Ask:
