@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- In JavaScript, call, apply, and bind are methods of functions that allow you to control the value 
+    of this inside the function. They are especially useful when working with objects and method borrowing, 
+    or when you need more control over how a function is executed.
+
+
+    Why We Use call, apply, and bind
+
+    Main Purpose:
+
+    To explicitly set the value of this inside a function.-->
+
+
+
+    <script>
+        // 3. bind() – Preserving this in Async/Event Context (React-like)
+
+        // Does NOT invoke the function immediately.
+
+        // Returns a new function with this bound.
+
+        // JavaScript loses this context in callbacks (like in event handlers or setTimeout), so bind() is useful.
+
+        // Q: What happens if you don’t bind this in a callback (like in setTimeout)?
+
+        // Ans: You lose the original context, and this becomes undefined (in strict mode) or the global object.
+
+        // Why not always use bind? Why use call or apply instead?
+
+        // bind() is great for later execution, especially in event handlers or callbacks.
+
+        // call() and apply() are better when you want immediate execution.
+
+        // Also: bind() creates a new function, which can be less performant if you’re inside a loop.
+
+
+
+        const button = {
+            text: 'Click me',
+            handleClick: function () {
+                console.log(this.text);
+            }
+        };
+
+        const boundClick = button.handleClick.bind(button);
+        setTimeout(boundClick, 1000);
+    </script>
+</body>
+
+</html>

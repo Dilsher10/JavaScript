@@ -9,20 +9,20 @@
 
 <body>
     <script>
-        Function.prototype.myBind = function (context, ...args1) {
+        Function.prototype.myBind = function (context, ...args) {
 
             if (typeof this !== 'function') {
                 throw new TypeError('myBind must be called on a function');
             }
 
             // Save reference to the original function (`this`)
-            const self = this;
+            const fn = this;
 
             // Return a new function (the bound function)
-            return function (...args2) {
+            return function (...newArgs) {
                 // When the bound function is called, call the original function
                 // with the provided `context` and combined arguments
-                return self.apply(context, [...args1, ...args2]);
+                return fn.apply(context, [...args, ...newArgs]);
             };
         };
 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- In JavaScript, call, apply, and bind are methods of functions that allow you to control the value 
+    of this inside the function. They are especially useful when working with objects and method borrowing, 
+    or when you need more control over how a function is executed.
+
+    Why We Use call, apply, and bind
+
+    Main Purpose:
+    
+    To explicitly set the value of this inside a function.
+    Use a method from one object for another object.
+    JavaScript loses this context in callbacks (like in event handlers or setTimeout), so bind() is useful.
+
+
+    Common Interview Traps
+
+    "What’s the difference between call and bind?"
+
+    call invokes immediately; bind returns a new function.
+
+
+
+    "When would apply be better than call?"
+
+    When passing an unknown number of arguments (like Math.max on arrays).-->
+
+
+
+    <script>
+
+        // 1. call() – Method Borrowing
+
+        // Immediately invokes the function.
+
+        // Takes arguments individually.
+
+
+        function introduce(language) {
+            console.log(`Hi, I'm ${this.name}, and I code in ${language}.`);
+        }
+
+        const dev = {
+            name: 'Dilsher',
+        };
+
+        introduce.call(dev, 'JavaScript');
+
+
+
+
+
+
+
+        // Now refactor this using classes
+
+        // This usually comes up when you've used call() or apply() for inheritance or method borrowing, and 
+        // they want to see if you understand ES6 classes, which is the modern, cleaner way to do OOP in JavaScript.
+
+
+
+        // This is Original using call()
+
+        function Animal(name) {
+            this.name = name;
+        }
+        function Dog(name, breed) {
+            Animal.call(this, name); // inherit from Animal
+            this.breed = breed;
+        }
+        const dogOne = new Dog('Buddy', 'Labrador');
+
+
+
+
+
+        // This is Refactored Using ES6 class Syntax:
+
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(name, breed) {
+                super(name); // same as Animal.call(this, name)
+                this.breed = breed;
+            }
+        }
+
+        const dog = new Dog('Buddy', 'Labrador');
+        console.log(dog.name);  // Buddy
+        console.log(dog.breed); // Labrador
+
+
+        // Why They Ask:
+
+        // Tests understanding of prototypal inheritance vs classical (class) inheritance.
+
+        // You should know when and why to use super() and extends.
+
+    </script>
+
+</body>
+
+</html>

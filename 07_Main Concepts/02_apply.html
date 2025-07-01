@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 2. apply() – Variadic Functions with Dynamic Context
+
+        // Just like call(), invokes the function immediately.
+
+        // Takes arguments as an array.
+
+
+
+        function maxSalary() {
+            return Math.max.apply(null, arguments);
+        }
+
+        console.log(maxSalary(50000, 75000, 120000));
+
+
+
+
+
+
+        // What’s the difference in using spread operator vs. apply() here?
+
+        // apply() lets you call a function with an array of arguments and explicitly set the this context, 
+        // while the spread operator (...) simply expands an array into individual arguments without affecting this.
+
+
+
+        // Using apply() (sets this explicitly):
+
+
+        function greet(greeting) {
+            console.log(`${greeting}, my name is ${this.name}`);
+        }
+
+        const personOne = { name: 'Dilsher' };
+
+        greet.apply(personOne, ['Hello']);
+
+        // Output: Hello, my name is 
+        // In this case, apply() sets this to person and passes 'Hello' as an argument.
+
+
+
+
+
+
+
+
+        // Using spread operator (does NOT set this):
+
+        function greet(greeting) {
+            console.log(`${greeting}, my name is ${this.name}`);
+        }
+
+        const person = { name: 'Dilsher' };
+
+        greet(...['Hello']);
+
+        // Output: Hello, my name is undefined (or error in strict mode)
+
+        // Here, this is not set to person, so it defaults to undefined (or the global object in non-strict mode), and the result is incorrect.
+
+
+
+        // Conclusion:
+
+        // Use apply() when you need to control this.
+
+        // Use spread when you just need to pass arguments, and this doesn’t matter.
+
+    </script>
+</body>
+
+</html>
