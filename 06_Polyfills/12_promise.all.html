@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        function myPromiseAll(promises) {
+            return new Promise((resolve, reject) => {
+                // Store results in same order
+                const results = [];
+                let completed = 0;
+
+                // If input is empty, resolve immediately
+                if (promises.length === 0) {
+                    return resolve([]);
+                }
+
+                // Loop through all items in the input array
+                promises.forEach((promise, index) => {
+                    // Make sure the item is a Promise
+                    Promise.resolve(promise)
+                        .then((value) => {
+                            results[index] = value; // store result at correct index
+                            completed++;
+
+                            // If all promises are done, resolve with the results array
+                            if (completed === promises.length) {
+                                resolve(results);
+                            }
+                        })
+                        .catch((err) => {
+                            // If any promise fails, reject immediately
+                            reject(err);
+                        });
+                });
+            });
+        }
+
+
+        const promise1 = Promise.resolve("A");
+        const promise2 = Promise.resolve("B");
+        const promise3 = new Promise((res) => setTimeout(() => res("C"), 1000));
+
+        myPromiseAll([promise1, promise2, promise3]).then((values) => {
+            console.log("All done:", values); // ["A", "B", "C"]
+        }).catch((err) => {
+            console.log("Failed:", err);
+        });
+
+
+    </script>
 </body>
+
 </html>
