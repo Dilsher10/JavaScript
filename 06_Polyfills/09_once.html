@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function once(fn) {
+            // This keeps track of whether the function has run already
+            let called = false;
+
+            // This will store the result of the first call
+            let result;
+
+            // Return a new function that wraps the original one
+            return function (...args) {
+                // If the function hasn't been called yet
+                if (!called) {
+                    called = true; // Mark it as called
+
+                    // Call the original function with the same context and arguments
+                    result = fn.apply(this, args);
+                }
+
+                // Return the stored result every time
+                return result;
+            };
+        }
+
+
+
+
+        function greet(name) {
+            console.log(`Hello, ${name}!`);
+            return `Greeted ${name}`;
+        }
+
+        // Wrap the greet function so it only runs once
+        const greetOnce = once(greet);
+
+        // First call: function runs, logs and returns value
+        console.log(greetOnce("Alice")); // Logs: Hello, Alice! → Returns: Greeted Alice
+
+        // Second call: function does not run, returns cached result
+        console.log(greetOnce("Bob"));   // Logs nothing → Returns: Greeted Alice
+
+
+    </script>
+</body>
+
+</html>
