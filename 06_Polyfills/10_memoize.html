@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function memoize(fn) {
+            // Create an object to store results (the cache)
+            const cache = {};
+
+            // Return a new function that uses the cache
+            return function (...args) {
+                // Create a key from the arguments (as a string)
+                const key = JSON.stringify(args);
+
+                // If result is already in the cache, return it
+                if (key in cache) {
+                    return cache[key];
+                }
+
+                // Otherwise, call the function and store the result
+                const result = fn.apply(this, args);
+                cache[key] = result;
+
+                // Return the newly calculated result
+                return result;
+            };
+        }
+
+
+        function slowAdd(a, b) {
+            return a + b;
+        }
+
+        const memoizedAdd = memoize(slowAdd);
+
+        console.log(memoizedAdd(2, 3)); // Logs "Calculating...", then 5
+        console.log(memoizedAdd(2, 3)); // Returns 5 instantly (from cache)
+
+    </script>
+</body>
+
+</html>
