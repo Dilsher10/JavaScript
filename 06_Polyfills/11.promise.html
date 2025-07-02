@@ -24,9 +24,10 @@
                 value = result;
 
                 // Run the success callback if it exists
-                if (onFulfilled) {
+                if (typeof onFulfilled === "function") {
                     onFulfilled(value);
                 }
+
             }
 
 
@@ -37,9 +38,10 @@
                 value = error;
 
                 // Run the error callback if it exists
-                if (onRejected) {
+                if (typeof onRejected === "function") {
                     onRejected(value);
                 }
+
             }
 
 
@@ -54,6 +56,7 @@
 
             // Define the .then method
             this.then = function (callback) {
+                // Assign callback to the onFulfilled
                 onFulfilled = callback;
 
                 // If already resolved, run it immediately
@@ -69,6 +72,7 @@
 
             // Define the .catch method
             this.catch = function (callback) {
+                // Assign callback to the onRejected
                 onRejected = callback;
 
                 // If already rejected, run it immediately
