@@ -34,11 +34,11 @@
         }
 
 
-        function slowAdd(a, b) {
+        function add(a, b) {
             return a + b;
         }
 
-        const memoizedAdd = memoize(slowAdd);
+        const memoizedAdd = memoize(add);
 
         console.log(memoizedAdd(2, 3)); // Logs "Calculating...", then 5
         console.log(memoizedAdd(2, 3)); // Returns 5 instantly (from cache)
