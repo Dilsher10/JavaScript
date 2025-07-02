@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function myPromise(executor) {
+
+            let state = "pending"; // Start with state: 'pending' and can be 'fulfilled' or 'rejected' later
+            let value; // stores the result or error
+            let onFulfilled = null; // success callback
+            let onRejected = null;  // error callback
+
+
+            // This is called when the promise is resolved
+            function resolve(result) {
+                if (state !== "pending") return; // only run once
+                state = "fulfilled";
+                value = result;
+
+                // Run the success callback if it exists
+                if (onFulfilled) {
+                    onFulfilled(value);
+                }
+            }
+
+
+            // This is called when the promise is rejected
+            function reject(error) {
+                if (state !== "pending") return; // only run once
+                state = "rejected";
+                value = error;
+
+                // Run the error callback if it exists
+                if (onRejected) {
+                    onRejected(value);
+                }
+            }
+
+
+            // Run the executor function right away
+            try {
+                executor(resolve, reject);
+            } catch (err) {
+                reject(err); // catch any error and reject the promise
+            }
+
+
+
+            // Define the .then method
+            this.then = function (callback) {
+                onFulfilled = callback;
+
+                // If already resolved, run it immediately
+                if (state === "fulfilled") {
+                    onFulfilled(value);
+                }
+
+                // Return this to allow chaining
+                return this;
+            };
+
+
+
+            // Define the .catch method
+            this.catch = function (callback) {
+                onRejected = callback;
+
+                // If already rejected, run it immediately
+                if (state === "rejected") {
+                    onRejected(value);
+                }
+
+                return this;
+            };
+        }
+
+
+        const myCheck = new myPromise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("It worked!");
+                // reject("Something went wrong");
+            }, 1000);
+        });
+
+        myCheck.then((data) => {
+            console.log("Success:", data);
+        }).catch((err) => {
+            console.log("Error:", err);
+        });
+
+    </script>
+</body>
+
+</html>
