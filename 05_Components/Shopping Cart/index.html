@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vanilla JS Shop (FAANG Style)</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Vanilla Shop</h1>
+    <div id="cart-count" aria-live="polite">Cart (0)</div>
+  </header>
+
+  <main>
+    <section id="products" aria-label="Product List"></section>
+
+
+    <section id="cart" aria-label="Shopping Cart">
+      <h2>Cart</h2>
+      <ul id="cart-items"></ul>
+      <div id="cart-total">Total: $0</div>
+      <button id="clear-cart-btn" aria-label="Clear shopping cart">Clear Cart</button>
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
