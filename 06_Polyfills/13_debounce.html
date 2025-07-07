@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function debounce(fn, delay) {
+      // This will store the timer
+      let timer;
+
+      // Return a new function that will be called instead of fn
+      return function (...args) {
+
+        // If the function was called before the delay finished, clear the old timer
+        clearTimeout(timer);
+
+        // Set a new timer to call the original function after the delay
+        timer = setTimeout(() => {
+          // Call the original function with the correct "this" and arguments
+          fn.apply(this, args);
+        }, delay);
+      };
+    }
+  </script>
+</body>
+</html>

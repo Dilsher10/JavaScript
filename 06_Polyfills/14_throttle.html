@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function throttle(fn, delay) {
+      // Keeps track of the last time the function was called
+      let lastCall = 0;
+
+      return function (...args) {
+        // Get the current time
+        const now = new Date().getTime();
+
+        // If enough time has passed, call the function
+        if (now - lastCall >= delay) {
+          lastCall = now;
+          fn.apply(this, args); // Call the original function with correct context and arguments
+        }
+      };
+    }
+  </script>
+</body>
+</html>
