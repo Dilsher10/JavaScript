@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters label {
+  margin-right: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
