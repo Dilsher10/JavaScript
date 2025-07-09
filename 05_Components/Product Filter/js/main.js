@@ -2,6 +2,7 @@ import { products } from './data.js';
 import { filterProducts } from './filter.js';
 import { getUniqueCategories } from './categories.js';
 import { debounce } from './utils.js';
+import { renderProducts } from './products.js';
 
 const state = {
   filters: {
@@ -12,36 +13,16 @@ const state = {
 };
 
 // DOM Elements
-const productListEl = document.getElementById("product-list");
+const productList = document.getElementById("product-list");
 const categoryEl = document.getElementById("filter-category");
 const priceEl = document.getElementById("filter-price");
 const searchEl = document.getElementById("filter-search");
 
-// Render products
-function renderProductList(productArray) {
-  productListEl.innerHTML = "";
-
-  if (productArray.length === 0) {
-    productListEl.innerHTML = "<p>No products found.</p>";
-    return;
-  }
-
-  productArray.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "product";
-    div.innerHTML = `
-      <h3>${p.name}</h3>
-      <p>Category: ${p.category}</p>
-      <p>Price: $${p.price}</p>
-    `;
-    productListEl.appendChild(div);
-  });
-}
 
 // Filter + render
 function updateAndRender() {
   const result = filterProducts(products, state.filters);
-  renderProductList(result);
+  renderProducts(result, productList);
 }
 
 // Setup filters
