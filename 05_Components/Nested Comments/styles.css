@@ -1,0 +1,103 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form input {
+  flex: 1;
+  padding: 8px;
+}
+
+form button {
+  padding: 8px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment {
+  border-left: 2px solid #ddd;
+  margin: 10px 0;
+  background-color: aliceblue;
+  padding: 20px;
+  list-style: none;
+}
+
+#comments-section {
+  padding: 0;
+}
+
+.comment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.actions button {
+  padding: 8px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.replies {
+  margin-left: 20px;
+}
+
+.vote-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.1rem;
+}
+
+
+.reply-form {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.reply-form input {
+  flex: 1;
+  padding: 5px;
+}
+
+
+.edit-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.edit-form input {
+  flex: 1;
+  padding: 5px;
+}
