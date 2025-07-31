@@ -1,0 +1,38 @@
+body {
+  background-color: #000;
+}
+
+.accordion {
+  width: 500px;
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.question {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.question:focus {
+  outline: 2px solid gainsboro;
+}
+
+.answer {
+  padding: 3rem 1rem;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+span.icon.active {
+  rotate: 226deg;
+}
