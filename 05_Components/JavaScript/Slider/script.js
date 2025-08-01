@@ -73,12 +73,6 @@ images.forEach((_, index) => {
 });
 
 
-function setActiveImage(index) {
-    currentIndex = index;
-    activeImage.setAttribute("src", images[currentIndex]);
-    updateActiveDot();
-    resetAutoplay();
-}
 
 function updateActiveDot() {
     const dots = dotsContainer.querySelectorAll(".dot");
@@ -86,6 +80,8 @@ function updateActiveDot() {
         dot.classList.toggle("active", i === currentIndex);
     });
 }
+
+
 
 function goToNextImage() {
     const nextIndex = currentIndex + 1;
@@ -95,16 +91,36 @@ function goToNextImage() {
     setActiveImage(nextIndex);
 }
 
+
+
+
 function goToPrevImage() {
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    const prevIndex = currentIndex - 1;
+    if(prevIndex < 0){
+        prevIndex = images.length - 1;
+    }
     setActiveImage(prevIndex);
 }
 
-// Autoplay function with reset
+
+
+// Autoplay Slider
 function resetAutoplay() {
     clearTimeout(autoplayTimeout);
     autoplayTimeout = setTimeout(goToNextImage, 3000);
 }
+
+
+
+
+function setActiveImage(index) {
+    currentIndex = index;
+    activeImage.setAttribute("src", images[currentIndex]);
+    updateActiveDot();
+    resetAutoplay();
+}
+
+
 
 // Button click handlers
 leftArrow.addEventListener("click", goToPrevImage);
