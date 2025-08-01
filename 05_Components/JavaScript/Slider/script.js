@@ -110,6 +110,7 @@ document.addEventListener('keydown', handleKeydown);
 activeImage.addEventListener('mouseenter', handleMouseEnter);
 activeImage.addEventListener('mouseleave', handleMouseLeave);
 activeImage.addEventListener('touchstart', handleTouchStartX);
+activeImage.addEventListener('touchend', handleTouchEndX);
 
 // Initialize
 setActiveImage(currentIndex);
