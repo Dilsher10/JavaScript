@@ -109,6 +109,7 @@ rightArrow.addEventListener("click", goToNextImage);
 document.addEventListener('keydown', handleKeydown);
 activeImage.addEventListener('mouseenter', handleMouseEnter);
 activeImage.addEventListener('mouseleave', handleMouseLeave);
+activeImage.addEventListener('touchstart', handleTouchStartX);
 
 // Initialize
 setActiveImage(currentIndex);
