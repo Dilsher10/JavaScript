@@ -13,6 +13,34 @@ const dotsContainer = document.getElementById("dotsContainer");
 
 let currentIndex = 0;
 let autoplayTimeout;
+let touchStartX = 0;
+
+
+
+// Mouse Events
+
+function handleMouseEnter(){
+    clearTimeout(autoplayTimeout);
+}
+
+function handleMouseLeave(){
+    resetAutoplay();
+}
+
+
+
+
+// Keyboard Navigation
+function handleKeydown(e){
+    if(e.key === 'Arrowright'){
+        goToNextImage();
+    } else if(e.key === 'ArrowLeft'){
+        goToPrevImage();
+    }
+}
+
+
+
 
 // Create dots
 images.forEach((_, index) => {
@@ -23,6 +51,7 @@ images.forEach((_, index) => {
     });
     dotsContainer.appendChild(dot);
 });
+
 
 function setActiveImage(index) {
     currentIndex = index;
@@ -57,6 +86,9 @@ function resetAutoplay() {
 // Button click handlers
 leftArrow.addEventListener("click", goToPrevImage);
 rightArrow.addEventListener("click", goToNextImage);
+document.addEventListener('keydown', handleKeydown);
+activeImage.addEventListener('mouseenter', handleMouseEnter);
+activeImage.addEventListener('mouseleave', handleMouseLeave);
 
 // Initialize
 setActiveImage(currentIndex);
