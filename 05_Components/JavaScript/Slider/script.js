@@ -20,11 +20,11 @@ let touchEndX = 0;
 // Touch Support
 
 function handleTouchStartX(e){
-    touchStartX = e.changedTouch[0].screenX;
+    touchStartX = e.changedTouches[0].screenX;
 }
 
 function handleTouchEndX(e){
-    touchEndX = e.changedTouch[0].screenX;
+    touchEndX = e.changedTouches[0].screenX;
     handleGesture();
 }
 
@@ -88,7 +88,10 @@ function updateActiveDot() {
 }
 
 function goToNextImage() {
-    const nextIndex = (currentIndex + 1) % images.length;
+    const nextIndex = currentIndex + 1;
+    if(nextIndex >= images.length){
+        nextIndex = 0;
+    }
     setActiveImage(nextIndex);
 }
 
