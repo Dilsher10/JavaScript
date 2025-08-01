@@ -53,7 +53,7 @@ function handleMouseLeave() {
 
 // Keyboard Navigation
 function handleKeydown(e) {
-    if (e.key === 'Arrowright') {
+    if (e.key === 'ArrowRight') {
         goToNextImage();
     } else if (e.key === 'ArrowLeft') {
         goToPrevImage();
