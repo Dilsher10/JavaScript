@@ -18,32 +18,33 @@ let touchEndX = 0;
 
 
 // Touch Support
-
-function handleTouchStartX(e){
+function handleTouchStartX(e) {
     touchStartX = e.changedTouches[0].screenX;
 }
 
-function handleTouchEndX(e){
+function handleTouchEndX(e) {
     touchEndX = e.changedTouches[0].screenX;
     handleGesture();
 }
 
-function handleGesture(){
-    if(touchEndX < touchStartX - 50){
+function handleGesture() {
+    if (touchEndX < touchStartX - 50) {
         goToNextImage();
-    } else if(touchEndX > touchEndX + 50){
+    } else if (touchEndX > touchEndX + 50) {
         goToPrevImage();
     }
 }
 
 
-// Mouse Events
 
-function handleMouseEnter(){
+
+
+// Mouse Events
+function handleMouseEnter() {
     clearTimeout(autoplayTimeout);
 }
 
-function handleMouseLeave(){
+function handleMouseLeave() {
     resetAutoplay();
 }
 
@@ -51,10 +52,10 @@ function handleMouseLeave(){
 
 
 // Keyboard Navigation
-function handleKeydown(e){
-    if(e.key === 'Arrowright'){
+function handleKeydown(e) {
+    if (e.key === 'Arrowright') {
         goToNextImage();
-    } else if(e.key === 'ArrowLeft'){
+    } else if (e.key === 'ArrowLeft') {
         goToPrevImage();
     }
 }
@@ -62,7 +63,7 @@ function handleKeydown(e){
 
 
 
-// Create dots
+// Create Dots
 images.forEach((_, index) => {
     const dot = document.createElement("div");
     dot.classList.add("dot");
@@ -73,7 +74,7 @@ images.forEach((_, index) => {
 });
 
 
-
+// Show Active Dot
 function updateActiveDot() {
     const dots = dotsContainer.querySelectorAll(".dot");
     dots.forEach((dot, i) => {
@@ -81,26 +82,6 @@ function updateActiveDot() {
     });
 }
 
-
-
-function goToNextImage() {
-    const nextIndex = currentIndex + 1;
-    if(nextIndex >= images.length){
-        nextIndex = 0;
-    }
-    setActiveImage(nextIndex);
-}
-
-
-
-
-function goToPrevImage() {
-    const prevIndex = currentIndex - 1;
-    if(prevIndex < 0){
-        prevIndex = images.length - 1;
-    }
-    setActiveImage(prevIndex);
-}
 
 
 
@@ -113,6 +94,29 @@ function resetAutoplay() {
 
 
 
+// Go To Next Image
+function goToNextImage() {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex >= images.length) {
+        nextIndex = 0;
+    }
+    setActiveImage(nextIndex);
+}
+
+
+
+// Go To Previous Image
+function goToPrevImage() {
+    const prevIndex = currentIndex - 1;
+    if (prevIndex < 0) {
+        prevIndex = images.length - 1;
+    }
+    setActiveImage(prevIndex);
+}
+
+
+
+// Show Current Image
 function setActiveImage(index) {
     currentIndex = index;
     activeImage.setAttribute("src", images[currentIndex]);
@@ -130,6 +134,8 @@ activeImage.addEventListener('mouseenter', handleMouseEnter);
 activeImage.addEventListener('mouseleave', handleMouseLeave);
 activeImage.addEventListener('touchstart', handleTouchStartX);
 activeImage.addEventListener('touchend', handleTouchEndX);
+
+
 
 // Initialize
 setActiveImage(currentIndex);
