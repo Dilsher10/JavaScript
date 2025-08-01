@@ -14,7 +14,27 @@ const dotsContainer = document.getElementById("dotsContainer");
 let currentIndex = 0;
 let autoplayTimeout;
 let touchStartX = 0;
+let touchEndX = 0;
 
+
+// Touch Support
+
+function handleTouchStartX(e){
+    touchStartX = e.changedTouch[0].screenX;
+}
+
+function handleTouchEndX(e){
+    touchEndX = e.changedTouch[0].screenX;
+    handleGesture();
+}
+
+function handleGesture(){
+    if(touchEndX < touchStartX - 50){
+        goToNextImage();
+    } else if(touchEndX > touchEndX + 50){
+        goToPrevImage();
+    }
+}
 
 
 // Mouse Events
