@@ -1,0 +1,22 @@
+#results {
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 300px;
+    position: absolute;
+    background: white;
+  }
+
+  #results p {
+    margin: 0;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  #results p:hover {
+    background-color: #f0f0f0;
+  }
+
+  #results p.active {
+    background-color: #f0f0f0;
+  }
