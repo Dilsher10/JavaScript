@@ -33,18 +33,27 @@ function renderProducts(products) {
 
 
 function renderPagination() {
+    pagination.innerHTML = '';
+    
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = 'Prev';
+    if (currentPage === 1) prevBtn.disabled = true;
+    prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+    pagination.appendChild(prevBtn);
 
-  let buttons = "";
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        if (i === currentPage) button.className = 'active';
+        button.addEventListener('click', () => goToPage(i));
+        pagination.appendChild(button);
+    }
 
-  buttons += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>Prev</button>`;
-
-  for (let i = 1; i <= totalPages; i++) {
-    buttons += `<button onclick="goToPage(${i})" style="margin: 2px; font-weight: ${i === currentPage ? 'bold' : 'normal'}">${i}</button>`;
-  }
-
-  buttons += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>`;
-
-  pagination.innerHTML = buttons;
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = 'Next';
+    if (currentPage === totalPages) nextBtn.disabled = true;
+    nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+    pagination.appendChild(nextBtn);
 }
 
 
