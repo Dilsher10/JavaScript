@@ -1,4 +1,4 @@
-const results = document.getElementById('results');
+const productsList = document.getElementById('products');
 const pagination = document.getElementById('pagination');
 const message = document.getElementById('message');
 
@@ -26,7 +26,7 @@ async function fetchData(page = 1) {
 
 
 function renderData(data) {
-    results.innerHTML = '';
+    productsList.innerHTML = '';
     data.forEach((item) => {
         const div = document.createElement('div');
         div.className = 'card';
@@ -35,7 +35,7 @@ function renderData(data) {
         <h3>${item.title}</h3>
         <h3>$${item.price}</h3>
         `;
-        results.appendChild(div);
+        productsList.appendChild(div);
     });
 }
 
