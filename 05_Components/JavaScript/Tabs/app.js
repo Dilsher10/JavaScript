@@ -11,26 +11,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Keyboard navigation using arrow keys
         tab.addEventListener("keydown", (e) => {
-            const index = Array.prototype.indexOf.call(tabs, tab);
+            const index = Array.from(tabs).indexOf(tab);
             if (e.key === "ArrowRight") {
-                // Move to next tab
-                const next = tabs[(index + 1) % tabs.length];
-                next.focus();
-                activateTab(next);
+                let nextIndex = index + 1;
+                if (nextIndex >= tabs.length) {
+                    nextIndex = 0;
+                }
+                const nextTab = tabs[nextIndex];
+                nextTab.focus();
+                activateTab(nextTab);
             } else if (e.key === "ArrowLeft") {
-                // Move to previous tab
-                const prev = tabs[(index - 1 + tabs.length) % tabs.length];
-                prev.focus();
-                activateTab(prev);
+                let prevIndex = index - 1;
+                if (prevIndex < 0) {
+                    prevIndex = tabs.length - 1;
+                }
+                const prevTab = tabs[prevIndex];
+                prevTab.focus();
+                activateTab(prevTab);
             }
         });
     });
 
-    /**
-     * Activates the given tab:
-     * - Updates aria-selected
-     * - Shows the correct panel
-     */
+
+
+
     function activateTab(tab) {
         // Deactivate all tabs
         tabs.forEach(t => {
