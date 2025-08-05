@@ -10,10 +10,10 @@ export function renderProducts(products, container) {
         const div = document.createElement("div");
         div.className = "product";
         div.innerHTML = `
-      <h3>${p.name}</h3>
-      <p>Category: ${p.category}</p>
-      <p>Price: $${p.price}</p>
-    `;
+            <h3>${p.name}</h3>
+            <p>Category: ${p.category}</p>
+            <p>Price: $${p.price}</p>
+        `;
         container.appendChild(div);
     });
 }
