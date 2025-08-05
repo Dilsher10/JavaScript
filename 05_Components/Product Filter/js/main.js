@@ -19,7 +19,11 @@ const priceEl = document.getElementById("filter-price");
 const searchEl = document.getElementById("filter-search");
 
 
-
+// Filter + render
+function updateAndRender() {
+  const result = filterProducts(products, state.filters);
+  renderProducts(result, productList);
+}
 
 // Setup filters
 function setupFilters() {
