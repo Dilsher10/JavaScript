@@ -6,6 +6,8 @@ const limit = 10;
 let isLoading = false;
 let timeoutId = null; // for throttling
 
+
+
 // ✅ Fetch posts from API
 async function fetchPosts(page, limit) {
     try {
@@ -19,6 +21,8 @@ async function fetchPosts(page, limit) {
     }
 }
 
+
+
 // ✅ Render posts on page
 function renderPosts(posts) {
     posts.forEach(post => {
@@ -28,6 +32,8 @@ function renderPosts(posts) {
         postsContainer.appendChild(div);
     });
 }
+
+
 
 // ✅ Load more posts
 async function loadMorePosts() {
@@ -48,6 +54,8 @@ async function loadMorePosts() {
     isLoading = false;
 }
 
+
+
 // ✅ Throttled Observer Callback using setTimeout only
 function handleIntersect(entries) {
     
@@ -59,6 +67,8 @@ function handleIntersect(entries) {
         }
     }, 500); // 500ms throttle
 }
+
+
 
 // ✅ Setup IntersectionObserver
 const observer = new IntersectionObserver(handleIntersect, {
