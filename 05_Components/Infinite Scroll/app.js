@@ -3,14 +3,14 @@ const loader = document.getElementById('loader');
 
 let page = 1;
 const limit = 10;
-let loading = false;
-let isEnd = false;
+let isLoading = false;
 let timeoutId = null; // for throttling
 
 // ✅ Fetch posts from API
 async function fetchPosts(page, limit) {
     try {
-        const res = await fetch(`https://dummyjson.com/posts?page=${page}&limit=${limit}`);
+        const skip = (page - 1) * limit;
+        const res = await fetch(`https://dummyjson.com/posts?limit=${limit}&skip=${skip}`);
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         return data.posts;
@@ -31,33 +31,32 @@ function renderPosts(posts) {
 
 // ✅ Load more posts
 async function loadMorePosts() {
-    if (loading || isEnd) return;
+    if (isLoading) return;
 
-    loading = true;
+    isLoading = true;
 
     const posts = await fetchPosts(page, limit);
 
     if (!posts || posts.length === 0) {
         loader.textContent = 'No more posts';
-        isEnd = true;
         observer.disconnect(); // stop observing
         return;
     }
 
     renderPosts(posts);
     page++;
-    loading = false;
+    isLoading = false;
 }
 
 // ✅ Throttled Observer Callback using setTimeout only
 function handleIntersect(entries) {
-    if (timeoutId) return; // skip if waiting
+    
+    clearTimeout(timeoutId);
 
     timeoutId = setTimeout(() => {
         if (entries[0].isIntersecting) {
             loadMorePosts();
         }
-        timeoutId = null; // reset timeout
     }, 500); // 500ms throttle
 }
 
